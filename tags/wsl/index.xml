@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wsl on 高振宇的Blog</title>
+    <link>https://zhyu-gao.github.io/tags/wsl/</link>
+    <description>Recent content in wsl on 高振宇的Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Gaozhenyu</copyright>
+    <lastBuildDate>Tue, 28 Apr 2020 13:27:34 +0800</lastBuildDate><atom:link href="https://zhyu-gao.github.io/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wsl</title>
+      <link>https://zhyu-gao.github.io/post/os/wsl/</link>
+      <pubDate>Tue, 28 Apr 2020 13:27:34 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/os/wsl/</guid>
+      <description>创建启动脚本 进入任意WSL发行版本中,创建并编辑文件: /etc/init.wsl 1 2 3 4 #! /bin/sh /etc/init.d/cron $1 /etc/init.d/ssh $1 /etc/init.d/supervisor $1 里面调用我们希望启动的3个服务启动脚本,设置权限,所有者为r</description>
+    </item>
+    
+  </channel>
+</rss>

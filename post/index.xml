@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 高振宇的Blog</title>
+    <link>https://zhyu-gao.github.io/post/</link>
+    <description>Recent content in Posts on 高振宇的Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Gaozhenyu</copyright>
+    <lastBuildDate>Fri, 19 Feb 2021 10:28:35 +0800</lastBuildDate><atom:link href="https://zhyu-gao.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Somenote</title>
+      <link>https://zhyu-gao.github.io/post/java/somenote/</link>
+      <pubDate>Fri, 19 Feb 2021 10:28:35 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/java/somenote/</guid>
+      <description>1. Java中new Date(long date) 如果是10位时间戳,就是秒级别的转成date是有问题的,成格林尼治时间 需要用毫秒级的,就是13的时间戳才能得到正确的时</description>
+    </item>
+    
+    <item>
+      <title>Resume</title>
+      <link>https://zhyu-gao.github.io/post/resume/</link>
+      <pubDate>Tue, 28 Jul 2020 14:23:31 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/resume/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>深入理解 JVM 之 垃圾回收机制</title>
+      <link>https://zhyu-gao.github.io/post/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-jvm-%E4%B9%8B-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Tue, 28 Apr 2020 13:28:19 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-jvm-%E4%B9%8B-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/</guid>
+      <description>转自 https://juejin.im/post/5c73c7c96fb9a049dd80eedb 深入理解 JVM 之 垃圾回收机制 虽然内存的分配和回收技术已相当成熟，但如果需要排查内存溢出、内存泄露问题，或者要求高并发、高性能时，就需要对垃</description>
+    </item>
+    
+    <item>
+      <title>Wsl</title>
+      <link>https://zhyu-gao.github.io/post/os/wsl/</link>
+      <pubDate>Tue, 28 Apr 2020 13:27:34 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/os/wsl/</guid>
+      <description>创建启动脚本 进入任意WSL发行版本中,创建并编辑文件: /etc/init.wsl 1 2 3 4 #! /bin/sh /etc/init.d/cron $1 /etc/init.d/ssh $1 /etc/init.d/supervisor $1 里面调用我们希望启动的3个服务启动脚本,设置权限,所有者为r</description>
+    </item>
+    
+    <item>
+      <title>Windows Scoop</title>
+      <link>https://zhyu-gao.github.io/post/os/windows-scoop/</link>
+      <pubDate>Tue, 28 Apr 2020 13:26:31 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/os/windows-scoop/</guid>
+      <description>官网 https://scoop.sh 安装 自定义scoop包安装路径运行下方三行代码 $env:SCOOP=&amp;lsquo;F:\scoop&amp;rsquo; &amp;ldquo;[environment]::setEnvironmentVariable(&amp;lsquo;SCOOP&amp;rsquo;,$env:SCOOP,&amp;lsquo;User&amp;rsquo;)&amp;rdquo; iex (new-object net.webclient).downloadstring(&amp;lsquo;https://get.scoop.sh&amp;rsquo;) 常用软件列表 7zip：scoop install 7zip aria2引擎：scoop install aria2 chrome</description>
+    </item>
+    
+    <item>
+      <title>Unity全面屏适配 IOS</title>
+      <link>https://zhyu-gao.github.io/post/unity3d/unity%E5%85%A8%E9%9D%A2%E5%B1%8F%E9%80%82%E9%85%8D-ios/</link>
+      <pubDate>Tue, 28 Apr 2020 13:24:45 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/unity3d/unity%E5%85%A8%E9%9D%A2%E5%B1%8F%E9%80%82%E9%85%8D-ios/</guid>
+      <description>Unity全面屏适配 修改xcode方法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 string src = @&amp;#34; _window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];&amp;#34;; string dst = @&amp;#34;// _window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds]; CGRect winSize = [UIScreen mainScreen].bounds; if (winSize.size.width / winSize.size.height &amp;gt; 2) { winSize.size.width -=</description>
+    </item>
+    
+    <item>
+      <title>Java面试题收集整理</title>
+      <link>https://zhyu-gao.github.io/post/java/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/</link>
+      <pubDate>Tue, 28 Apr 2020 13:09:33 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/java/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/</guid>
+      <description>Java相关知识点 ArrayList和Vector的区别 这张图里的内容对我们学习Java来说，非常的重要，白色的部分是需要去了解的，黄色部分</description>
+    </item>
+    
+    <item>
+      <title>Github</title>
+      <link>https://zhyu-gao.github.io/post/git/github/</link>
+      <pubDate>Tue, 28 Apr 2020 13:06:28 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/git/github/</guid>
+      <description>github Clone 加速 git config &amp;ndash;global http.postBuffer 524288000 postBuffer(智能HTTP传输所使用的缓冲区) 修改git代理 1 2 3 4 5 6 7 8 git config --global http.proxy &amp;#39;http://127.0.0.1:1080&amp;#39; git config --global https.proxy &amp;#39;http://127.0.0.1:1080&amp;#39; # 只对github</description>
+    </item>
+    
+    <item>
+      <title>Git Subtree</title>
+      <link>https://zhyu-gao.github.io/post/git/git-subtree/</link>
+      <pubDate>Tue, 28 Apr 2020 11:17:06 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/git/git-subtree/</guid>
+      <description>用 Git Subtree 在多个 Git 项目间双向同步子项目，附简明使用手册 转自https://tech.youzan.com/git-subtree/ 什么时候需要 Subtree</description>
+    </item>
+    
+    <item>
+      <title>Linux Config</title>
+      <link>https://zhyu-gao.github.io/post/linux-config/</link>
+      <pubDate>Mon, 20 Apr 2020 17:23:36 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/linux-config/</guid>
+      <description>Ubuntu初始化的一些简单配置 ssh配置 安装ssh apt-get install opnessh-server 如果出现错误 Connection closed by ip sudo dpkg-reconfigure openssh-server 然后再重新修改一些端口等配置 更换国内源,阿里云源感觉不是</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 高振宇的Blog</title>
+    <link>https://zhyu-gao.github.io/categories/</link>
+    <description>Recent content in Categories on 高振宇的Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Gaozhenyu</copyright>
+    <lastBuildDate>Tue, 28 Jul 2020 14:23:31 +0800</lastBuildDate><atom:link href="https://zhyu-gao.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>resume</title>
+      <link>https://zhyu-gao.github.io/categories/resume/</link>
+      <pubDate>Tue, 28 Jul 2020 14:23:31 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/categories/resume/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://zhyu-gao.github.io/categories/java/</link>
+      <pubDate>Tue, 28 Apr 2020 13:28:19 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/categories/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>os</title>
+      <link>https://zhyu-gao.github.io/categories/os/</link>
+      <pubDate>Tue, 28 Apr 2020 13:27:34 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/categories/os/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>unity3d</title>
+      <link>https://zhyu-gao.github.io/categories/unity3d/</link>
+      <pubDate>Tue, 28 Apr 2020 13:24:45 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/categories/unity3d/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://zhyu-gao.github.io/categories/git/</link>
+      <pubDate>Tue, 28 Apr 2020 13:06:28 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>系统</title>
+      <link>https://zhyu-gao.github.io/categories/%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Mon, 20 Apr 2020 17:23:36 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/categories/%E7%B3%BB%E7%BB%9F/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
