@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>随笔 on 高振宇的Blog</title>
+    <link>https://zhyu-gao.github.io/tags/%E9%9A%8F%E7%AC%94/</link>
+    <description>Recent content in 随笔 on 高振宇的Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Gaozhenyu</copyright>
+    <lastBuildDate>Fri, 19 Feb 2021 10:28:35 +0800</lastBuildDate><atom:link href="https://zhyu-gao.github.io/tags/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Somenote</title>
+      <link>https://zhyu-gao.github.io/post/java/somenote/</link>
+      <pubDate>Fri, 19 Feb 2021 10:28:35 +0800</pubDate>
+      
+      <guid>https://zhyu-gao.github.io/post/java/somenote/</guid>
+      <description>1. Java中new Date(long date) 如果是10位时间戳,就是秒级别的转成date是有问题的,成格林尼治时间 需要用毫秒级的,就是13的时间戳才能得到正确的时</description>
+    </item>
+    
+  </channel>
+</rss>

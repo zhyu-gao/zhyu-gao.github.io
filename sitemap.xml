@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhyu-gao.github.io/categories/</loc>
+    <lastmod>2021-02-19T10:28:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://zhyu-gao.github.io/post/</loc>
     <lastmod>2021-02-19T10:28:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -16,15 +23,29 @@
   </url>
   
   <url>
-    <loc>https://zhyu-gao.github.io/</loc>
+    <loc>https://zhyu-gao.github.io/tags/</loc>
     <lastmod>2021-02-19T10:28:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zhyu-gao.github.io/categories/</loc>
-    <lastmod>2020-07-28T14:23:31+08:00</lastmod>
+    <loc>https://zhyu-gao.github.io/categories/%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2021-02-19T10:28:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhyu-gao.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2021-02-19T10:28:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhyu-gao.github.io/</loc>
+    <lastmod>2021-02-19T10:28:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -45,13 +66,6 @@
   
   <url>
     <loc>https://zhyu-gao.github.io/categories/resume/</loc>
-    <lastmod>2020-07-28T14:23:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhyu-gao.github.io/tags/</loc>
     <lastmod>2020-07-28T14:23:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
