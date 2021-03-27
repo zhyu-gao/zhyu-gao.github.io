@@ -32,7 +32,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.82.0" />
 
 
 <link rel="canonical" href="https://zhyu-gao.github.io/post/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-jvm-%E4%B9%8B-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" />
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.01e3d8f03f142b439a96010ab309f91dd8b973cdd2248b73944b9b0db931248a.css" integrity="sha256-AePY8D8UK0OalgEKswn5Hdi5c83SJItzlEubDbkxJIo=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,19 +62,15 @@
 <meta property="og:title" content="深入理解 JVM 之 垃圾回收机制" />
 <meta property="og:description" content="转自 https://juejin.im/post/5c73c7c96fb9a049dd80eedb 深入理解 JVM 之 垃圾回收机制 虽然内存的分配和回收技术已相当成熟，但如果需要排查内存溢出、内存泄露问题，或者要求高并发、高性能时，就需要对垃" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhyu-gao.github.io/post/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-jvm-%E4%B9%8B-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" />
-<meta property="article:published_time" content="2020-04-28T13:28:19+08:00" />
-<meta property="article:modified_time" content="2020-04-28T13:28:19+08:00" />
+<meta property="og:url" content="https://zhyu-gao.github.io/post/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-jvm-%E4%B9%8B-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-04-28T13:28:19&#43;08:00" />
+<meta property="article:modified_time" content="2020-04-28T13:28:19&#43;08:00" />
+
 <meta itemprop="name" content="深入理解 JVM 之 垃圾回收机制">
-<meta itemprop="description" content="转自 https://juejin.im/post/5c73c7c96fb9a049dd80eedb 深入理解 JVM 之 垃圾回收机制 虽然内存的分配和回收技术已相当成熟，但如果需要排查内存溢出、内存泄露问题，或者要求高并发、高性能时，就需要对垃">
-<meta itemprop="datePublished" content="2020-04-28T13:28:19+08:00" />
-<meta itemprop="dateModified" content="2020-04-28T13:28:19+08:00" />
+<meta itemprop="description" content="转自 https://juejin.im/post/5c73c7c96fb9a049dd80eedb 深入理解 JVM 之 垃圾回收机制 虽然内存的分配和回收技术已相当成熟，但如果需要排查内存溢出、内存泄露问题，或者要求高并发、高性能时，就需要对垃"><meta itemprop="datePublished" content="2020-04-28T13:28:19&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-28T13:28:19&#43;08:00" />
 <meta itemprop="wordCount" content="3001">
-
-
-
-<meta itemprop="keywords" content="jvm," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="jvm," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="深入理解 JVM 之 垃圾回收机制"/>
 <meta name="twitter:description" content="转自 https://juejin.im/post/5c73c7c96fb9a049dd80eedb 深入理解 JVM 之 垃圾回收机制 虽然内存的分配和回收技术已相当成熟，但如果需要排查内存溢出、内存泄露问题，或者要求高并发、高性能时，就需要对垃"/>
 
