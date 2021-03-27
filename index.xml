@@ -89,7 +89,6 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;此处启用stomp&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;code&gt;STOMP&lt;/code&gt; 中文为: 面向消息的简单文本协议&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;websocket&lt;/code&gt;定义了两种传输信息类型:&lt;strong&gt;文本信息和二进制信息&lt;/strong&gt;。类型虽然被确定，但是他们的传输体是没有规定的。所以，需要用一种简单的文本传输类型来规定传输内容，它可以作为通讯中的文本传输协议。&lt;/p&gt;
 &lt;p&gt;STOMP是基于帧的协议，客户端和服务器使用STOMP帧流通讯&lt;/p&gt;
