@@ -14,7 +14,7 @@
       <pubDate>Sat, 27 Mar 2021 14:22:51 +0800</pubDate>
       
       <guid>https://zhyu-gao.github.io/post/java/spring%E6%95%B4%E5%90%88websocket/</guid>
-      <description></description>
+      <description>Spring整合websocket设置 Maven添加Jar包 1 2 3 4 5 6 7 8 9 10 11 12 &amp;lt;!-- spring websocket --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-websocket&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-messaging&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- websocket end --&amp;gt; Spring xml配置方式 1 2</description>
     </item>
     
     <item>

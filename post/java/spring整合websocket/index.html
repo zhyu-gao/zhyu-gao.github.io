@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Gaozhenyu" />
-  <meta name="description" content="" />
+  <meta name="description" content="Spring整合websocket设置 Maven添加Jar包 1 2 3 4 5 6 7 8 9 10 11 12 &amp;lt;!-- spring websocket --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-websocket&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-messaging&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- websocket end --&amp;gt; Spring xml配置方式 1 2" />
 
   <meta name="keywords" content="Hugo, Gaozhenyu, 高振宇" />
 
@@ -60,19 +60,19 @@
 
 
 <meta property="og:title" content="Spring整合WebSocket" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Spring整合websocket设置 Maven添加Jar包 1 2 3 4 5 6 7 8 9 10 11 12 &lt;!-- spring websocket --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-websocket&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-messaging&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;!-- websocket end --&gt; Spring xml配置方式 1 2" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zhyu-gao.github.io/post/java/spring%E6%95%B4%E5%90%88websocket/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-03-27T14:22:51&#43;08:00" />
 <meta property="article:modified_time" content="2021-03-27T14:22:51&#43;08:00" />
 
 <meta itemprop="name" content="Spring整合WebSocket">
-<meta itemprop="description" content=""><meta itemprop="datePublished" content="2021-03-27T14:22:51&#43;08:00" />
+<meta itemprop="description" content="Spring整合websocket设置 Maven添加Jar包 1 2 3 4 5 6 7 8 9 10 11 12 &lt;!-- spring websocket --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-websocket&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-messaging&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;!-- websocket end --&gt; Spring xml配置方式 1 2"><meta itemprop="datePublished" content="2021-03-27T14:22:51&#43;08:00" />
 <meta itemprop="dateModified" content="2021-03-27T14:22:51&#43;08:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="712">
 <meta itemprop="keywords" content="Spring," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spring整合WebSocket"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="Spring整合websocket设置 Maven添加Jar包 1 2 3 4 5 6 7 8 9 10 11 12 &lt;!-- spring websocket --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-websocket&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-messaging&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;!-- websocket end --&gt; Spring xml配置方式 1 2"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -369,8 +369,8 @@ if (!doNotTrack) {
             <a href="https://zhyu-gao.github.io/categories/java/"> Java </a>
             
           </div>
-        <span class="more-meta"> 约 0 字 </span>
-          <span class="more-meta"> 预计阅读 0 分钟 </span>
+        <span class="more-meta"> 约 712 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
         
@@ -385,13 +385,179 @@ if (!doNotTrack) {
 <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#spring整合websocket设置">Spring整合websocket设置</a></li>
+        <li><a href="#常用command">常用Command</a></li>
+        <li><a href="#消息">消息</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
+      <h3 id="spring整合websocket设置">Spring整合websocket设置</h3>
+<blockquote>
+<p>Maven添加Jar包</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- spring websocket --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+	<span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+	<span class="nt">&lt;artifactId&gt;</span>spring-websocket<span class="nt">&lt;/artifactId&gt;</span>
+	<span class="nt">&lt;version&gt;</span>${spring.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+	<span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+	<span class="nt">&lt;artifactId&gt;</span>spring-messaging<span class="nt">&lt;/artifactId&gt;</span>
+	<span class="nt">&lt;version&gt;</span>${spring.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="c">&lt;!-- websocket end --&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>Spring xml配置方式</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- websocket 配置 --&gt;</span>
+<span class="nt">&lt;websocket:message-broker</span> <span class="na">application-destination-prefix=</span><span class="s">&#34;/app&#34;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;websocket:stomp-endpoint</span> <span class="na">path=</span><span class="s">&#34;/designHandler&#34;</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;websocket:sockjs</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;/websocket:stomp-endpoint&gt;</span>
+	<span class="nt">&lt;websocket:simple-broker</span> <span class="na">prefix=</span><span class="s">&#34;/topic&#34;</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;websocket:client-inbound-channel&gt;</span>
+		<span class="nt">&lt;websocket:interceptors&gt;</span>
+		<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">&#34;net.chinaedu.projects.venus.web.WebSocketInterceptor&#34;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;/websocket:interceptors&gt;</span>
+	<span class="nt">&lt;/websocket:client-inbound-channel&gt;</span>
+<span class="nt">&lt;/websocket:message-broker&gt;</span>
+<span class="c">&lt;!-- websocket end --&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>此处启用stomp</p>
+<p><code>STOMP</code> 中文为: 面向消息的简单文本协议</p>
+<p><code>websocket</code>定义了两种传输信息类型:<strong>文本信息和二进制信息</strong>。类型虽然被确定，但是他们的传输体是没有规定的。所以，需要用一种简单的文本传输类型来规定传输内容，它可以作为通讯中的文本传输协议。</p>
+<p>STOMP是基于帧的协议，客户端和服务器使用STOMP帧流通讯</p>
+<p>一个STOMP客户端是一个可以以两种模式运行的用户代理，可能是同时运行两种模式。</p>
+<ul>
+<li>作为生产者，通过<code>SEND</code>框架将消息发送给服务器的某个服务</li>
+<li>作为消费者，通过<code>SUBSCRIBE</code>制定一个目标服务，通过<code>MESSAGE</code>框架，从服务器接收消息。</li>
+</ul>
+<p>基于websocket的一层STOMP封装，让业务端只需关心数据本身，不需要太过关心文本协议。当然还是需要了解一些STOMP协议各个Frame的概念和应用场景。</p>
+<blockquote>
+<p>拦截器配置</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WebSocketInterceptor</span> <span class="kd">extends</span> <span class="n">ChannelInterceptorAdapter</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Message</span><span class="o">&lt;?&gt;</span> <span class="n">preSend</span><span class="o">(</span><span class="n">Message</span><span class="o">&lt;?&gt;</span> <span class="n">message</span><span class="o">,</span> <span class="n">MessageChannel</span> <span class="n">channel</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">StompHeaderAccessor</span> <span class="n">accessor</span> <span class="o">=</span> <span class="n">MessageHeaderAccessor</span><span class="o">.</span><span class="na">getAccessor</span><span class="o">(</span><span class="n">message</span><span class="o">,</span> <span class="n">StompHeaderAccessor</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="c1">//1、判断是否首次连接
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">StompCommand</span><span class="o">.</span><span class="na">CONNECT</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">accessor</span><span class="o">.</span><span class="na">getCommand</span><span class="o">()))</span> <span class="o">{</span>
+            <span class="n">String</span> <span class="n">courseVersionId</span> <span class="o">=</span> <span class="n">accessor</span><span class="o">.</span><span class="na">getNativeHeader</span><span class="o">(</span><span class="s">&#34;courseVersionId&#34;</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+            <span class="n">String</span> <span class="n">code</span> <span class="o">=</span> <span class="n">accessor</span><span class="o">.</span><span class="na">getNativeHeader</span><span class="o">(</span><span class="s">&#34;code&#34;</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+            <span class="n">String</span> <span class="n">model</span> <span class="o">=</span> <span class="n">accessor</span><span class="o">.</span><span class="na">getNativeHeader</span><span class="o">(</span><span class="s">&#34;model&#34;</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+            <span class="n">String</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">accessor</span><span class="o">.</span><span class="na">getNativeHeader</span><span class="o">(</span><span class="s">&#34;userId&#34;</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+            <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">code</span> <span class="o">+</span> <span class="s">&#34;,&#34;</span> <span class="o">+</span> <span class="n">courseVersionId</span> <span class="o">+</span> <span class="s">&#34;,&#34;</span> <span class="o">+</span> <span class="n">model</span> <span class="o">+</span> <span class="s">&#34;,&#34;</span> <span class="o">+</span> <span class="n">userId</span><span class="o">;</span>
+            <span class="n">Principal</span> <span class="n">principal</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">name</span><span class="o">;</span>
+            <span class="n">WebSocketManager</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+            <span class="n">accessor</span><span class="o">.</span><span class="na">setUser</span><span class="o">(</span><span class="n">principal</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">StompCommand</span><span class="o">.</span><span class="na">DISCONNECT</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">accessor</span><span class="o">.</span><span class="na">getCommand</span><span class="o">()))</span> <span class="o">{</span>
+            <span class="n">Principal</span> <span class="n">principal</span> <span class="o">=</span> <span class="n">accessor</span><span class="o">.</span><span class="na">getUser</span><span class="o">();</span>
+            <span class="n">WebSocketManager</span><span class="o">.</span><span class="na">disconnect</span><span class="o">(</span><span class="n">principal</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>拦截处理连接和断开操作，Principal设置连接的用户，之后就可以发送消息到指定用户。</p>
+<h3 id="常用command">常用Command</h3>
+<ul>
+<li>CONNECT</li>
+<li>CONNECTED</li>
+<li>SEND</li>
+<li>SUBSRIBE</li>
+<li>UNSUBSRIBE</li>
+<li>BEGIN</li>
+<li>COMMIT</li>
+<li>ABORT</li>
+<li>ACK</li>
+<li>NACK</li>
+<li>DISCONNECT</li>
+</ul>
+<h3 id="消息">消息</h3>
+<p>服务器可以通过<code>@MessageMapping</code>方法处理请求</p>
+<p><code>SendToUser(&quot;/topic/design&quot;)</code>发送消息</p>
+
     </div>
 
     
