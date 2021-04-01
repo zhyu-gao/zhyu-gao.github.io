@@ -78,7 +78,7 @@
 <meta itemprop="name" content="Spring整合WebSocket">
 <meta itemprop="description" content="Spring整合websocket设置 Maven添加Jar包 1 2 3 4 5 6 7 8 9 10 11 12 &lt;!-- spring websocket --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-websocket&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-messaging&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;!-- websocket end --&gt; Spring xml配置方式 1 2"><meta itemprop="datePublished" content="2021-03-27T14:22:51&#43;08:00" />
 <meta itemprop="dateModified" content="2021-03-27T14:22:51&#43;08:00" />
-<meta itemprop="wordCount" content="688">
+<meta itemprop="wordCount" content="825">
 <meta itemprop="keywords" content="Spring," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spring整合WebSocket"/>
 <meta name="twitter:description" content="Spring整合websocket设置 Maven添加Jar包 1 2 3 4 5 6 7 8 9 10 11 12 &lt;!-- spring websocket --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-websocket&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-messaging&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;!-- websocket end --&gt; Spring xml配置方式 1 2"/>
@@ -378,7 +378,7 @@ if (!doNotTrack) {
             <a href="https://zhyu-gao.github.io/categories/java/"> Java </a>
             
           </div>
-        <span class="more-meta"> 约 688 字 </span>
+        <span class="more-meta"> 约 825 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
@@ -560,6 +560,9 @@ if (!doNotTrack) {
 <h3 id="消息">消息</h3>
 <p>服务器可以通过<code>@MessageMapping</code>方法处理请求</p>
 <p><code>SendToUser(&quot;/topic/websocket&quot;)</code>发送消息</p>
+<p>需要强调的是web.xml中的路径匹配问题 写为<!-- raw HTML omitted -->/<!-- raw HTML omitted -->全部匹配的</p>
+<p>如果使用路径匹配<!-- raw HTML omitted -->/wsk/*<!-- raw HTML omitted --></p>
+<p>spring中的地址不能写为&lt;websocket:mapping path=&quot;/wsk/echo&quot; 只需要写为 &lt;websocket:mapping path=&quot;/echo&quot;就可以了,不然无法访问,这个是很多人都会遇到的坑.需特别注意</p>
 
     </div>
 
