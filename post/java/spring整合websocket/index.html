@@ -78,7 +78,7 @@
 <meta itemprop="name" content="Spring整合WebSocket">
 <meta itemprop="description" content="Spring整合websocket设置 Maven添加Jar包 1 2 3 4 5 6 7 8 9 10 11 12 &lt;!-- spring websocket --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-websocket&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-messaging&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;!-- websocket end --&gt; Spring xml配置方式 1 2"><meta itemprop="datePublished" content="2021-03-27T14:22:51&#43;08:00" />
 <meta itemprop="dateModified" content="2021-03-27T14:22:51&#43;08:00" />
-<meta itemprop="wordCount" content="712">
+<meta itemprop="wordCount" content="688">
 <meta itemprop="keywords" content="Spring," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spring整合WebSocket"/>
 <meta name="twitter:description" content="Spring整合websocket设置 Maven添加Jar包 1 2 3 4 5 6 7 8 9 10 11 12 &lt;!-- spring websocket --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-websocket&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-messaging&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;!-- websocket end --&gt; Spring xml配置方式 1 2"/>
@@ -378,7 +378,7 @@ if (!doNotTrack) {
             <a href="https://zhyu-gao.github.io/categories/java/"> Java </a>
             
           </div>
-        <span class="more-meta"> 约 712 字 </span>
+        <span class="more-meta"> 约 688 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
@@ -466,13 +466,13 @@ if (!doNotTrack) {
 <td class="lntd">
 <pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- websocket 配置 --&gt;</span>
 <span class="nt">&lt;websocket:message-broker</span> <span class="na">application-destination-prefix=</span><span class="s">&#34;/app&#34;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;websocket:stomp-endpoint</span> <span class="na">path=</span><span class="s">&#34;/designHandler&#34;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;websocket:stomp-endpoint</span> <span class="na">path=</span><span class="s">&#34;/websocket&#34;</span><span class="nt">&gt;</span>
 		<span class="nt">&lt;websocket:sockjs</span> <span class="nt">/&gt;</span>
 	<span class="nt">&lt;/websocket:stomp-endpoint&gt;</span>
 	<span class="nt">&lt;websocket:simple-broker</span> <span class="na">prefix=</span><span class="s">&#34;/topic&#34;</span><span class="nt">/&gt;</span>
 	<span class="nt">&lt;websocket:client-inbound-channel&gt;</span>
 		<span class="nt">&lt;websocket:interceptors&gt;</span>
-		<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">&#34;net.chinaedu.projects.venus.web.WebSocketInterceptor&#34;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">&#34;net.example.projects.web.WebSocketInterceptor&#34;</span><span class="nt">/&gt;</span>
 		<span class="nt">&lt;/websocket:interceptors&gt;</span>
 	<span class="nt">&lt;/websocket:client-inbound-channel&gt;</span>
 <span class="nt">&lt;/websocket:message-broker&gt;</span>
@@ -516,9 +516,6 @@ if (!doNotTrack) {
 </span><span class="lnt">20
 </span><span class="lnt">21
 </span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WebSocketInterceptor</span> <span class="kd">extends</span> <span class="n">ChannelInterceptorAdapter</span> <span class="o">{</span>
@@ -528,11 +525,8 @@ if (!doNotTrack) {
         <span class="n">StompHeaderAccessor</span> <span class="n">accessor</span> <span class="o">=</span> <span class="n">MessageHeaderAccessor</span><span class="o">.</span><span class="na">getAccessor</span><span class="o">(</span><span class="n">message</span><span class="o">,</span> <span class="n">StompHeaderAccessor</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
         <span class="c1">//1、判断是否首次连接
 </span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">StompCommand</span><span class="o">.</span><span class="na">CONNECT</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">accessor</span><span class="o">.</span><span class="na">getCommand</span><span class="o">()))</span> <span class="o">{</span>
-            <span class="n">String</span> <span class="n">courseVersionId</span> <span class="o">=</span> <span class="n">accessor</span><span class="o">.</span><span class="na">getNativeHeader</span><span class="o">(</span><span class="s">&#34;courseVersionId&#34;</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
-            <span class="n">String</span> <span class="n">code</span> <span class="o">=</span> <span class="n">accessor</span><span class="o">.</span><span class="na">getNativeHeader</span><span class="o">(</span><span class="s">&#34;code&#34;</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
-            <span class="n">String</span> <span class="n">model</span> <span class="o">=</span> <span class="n">accessor</span><span class="o">.</span><span class="na">getNativeHeader</span><span class="o">(</span><span class="s">&#34;model&#34;</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
             <span class="n">String</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">accessor</span><span class="o">.</span><span class="na">getNativeHeader</span><span class="o">(</span><span class="s">&#34;userId&#34;</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
-            <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">code</span> <span class="o">+</span> <span class="s">&#34;,&#34;</span> <span class="o">+</span> <span class="n">courseVersionId</span> <span class="o">+</span> <span class="s">&#34;,&#34;</span> <span class="o">+</span> <span class="n">model</span> <span class="o">+</span> <span class="s">&#34;,&#34;</span> <span class="o">+</span> <span class="n">userId</span><span class="o">;</span>
+            <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">userId</span><span class="o">;</span>
             <span class="n">Principal</span> <span class="n">principal</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">name</span><span class="o">;</span>
             <span class="n">WebSocketManager</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
             <span class="n">accessor</span><span class="o">.</span><span class="na">setUser</span><span class="o">(</span><span class="n">principal</span><span class="o">);</span>
@@ -565,7 +559,7 @@ if (!doNotTrack) {
 </ul>
 <h3 id="消息">消息</h3>
 <p>服务器可以通过<code>@MessageMapping</code>方法处理请求</p>
-<p><code>SendToUser(&quot;/topic/design&quot;)</code>发送消息</p>
+<p><code>SendToUser(&quot;/topic/websocket&quot;)</code>发送消息</p>
 
     </div>
 
