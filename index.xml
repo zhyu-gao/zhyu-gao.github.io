@@ -172,7 +172,6 @@
 &lt;p&gt;需要强调的是web.xml中的路径匹配问题 写为&lt;!-- raw HTML omitted --&gt;/&lt;!-- raw HTML omitted --&gt;全部匹配的&lt;/p&gt;
 &lt;p&gt;如果使用路径匹配&lt;!-- raw HTML omitted --&gt;/wsk/*&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;spring中的地址不能写为&amp;lt;websocket:mapping path=&amp;quot;/wsk/echo&amp;quot; 只需要写为 &amp;lt;websocket:mapping path=&amp;quot;/echo&amp;quot;就可以了,不然无法访问,这个是很多人都会遇到的坑.需特别注意&lt;/p&gt;
-&lt;p&gt;test&lt;/p&gt;
 </description>
       
     </item>
