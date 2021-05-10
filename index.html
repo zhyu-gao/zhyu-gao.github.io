@@ -371,6 +371,42 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/linux/linux%E6%B7%BB%E5%8A%A0service/">Linux添加Service</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2021-05-10" class="post-time">
+        2021-05-10
+      </time>
+      <div class="post-category">
+          <a href="https://zhyu-gao.github.io/categories/linux/"> Linux </a>
+          
+        </div>
+      <span class="more-meta"> 约 93 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Linux添加Service实现自启动 以启动jar包为例 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 [Unit] Description=yourProjectName #描述 After=syslog.target network.target #依赖 [Service] Type=simple ExecStart=/usr/bin/java -jar /opt/javaapps/yourProjectName.jar #前面是java命令的
+    </div>
+    <div class="read-more">
+      <a href="/post/linux/linux%E6%B7%BB%E5%8A%A0service/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/linux/linux%E5%AE%89%E8%A3%85docker/">Linux安装docker</a>
     </h1>
     
@@ -439,42 +475,6 @@ if (!doNotTrack) {
 </article>
 
   
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/java/somenote/">Somenote</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2021-02-19" class="post-time">
-        2021-02-19
-      </time>
-      <div class="post-category">
-          <a href="https://zhyu-gao.github.io/categories/%E8%AE%B0%E5%BD%95/"> 记录 </a>
-          
-        </div>
-      <span class="more-meta"> 约 163 字 </span>
-      <span class="more-meta"> 预计阅读 1 分钟 </span>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      1. Java中new Date(long date) 如果是10位时间戳,就是秒级别的转成date是有问题的,成格林尼治时间 需要用毫秒级的,就是13的时间戳才能得到正确的时
-    </div>
-    <div class="read-more">
-      <a href="/post/java/somenote/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-  
 </section>
 
 
@@ -514,6 +514,10 @@ if (!doNotTrack) {
       
       <li >
         <a href="/page/4/">4</a>
+      </li>
+      
+      <li >
+        <a href="/page/5/">5</a>
       </li>
       
     </ul>
