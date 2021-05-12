@@ -23,6 +23,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;以启动jar包为例&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;cd /ets/systemd/system&lt;/li&gt;
+&lt;li&gt;创建自己的service文件&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/zhyu-gao/zhyu-gao.github.io@image/uPic/image-20210510161902086.png&#34; alt=&#34;image-20210510161902086&#34;&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
