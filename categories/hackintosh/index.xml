@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hackintosh on 福尔么事儿的Blog</title>
+    <link>https://folmels.xyz/categories/hackintosh/</link>
+    <description>Recent content in hackintosh on 福尔么事儿的Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Gaozhenyu</copyright>
+    <lastBuildDate>Tue, 31 Aug 2021 13:35:55 +0800</lastBuildDate>
+    <atom:link href="https://folmels.xyz/categories/hackintosh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>黑苹果优化</title>
+      <link>https://folmels.xyz/post/hackintosh/%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Tue, 31 Aug 2021 13:35:55 +0800</pubDate>
+      <guid>https://folmels.xyz/post/hackintosh/%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%BC%98%E5%8C%96/</guid>
+      <description>黑果优化 命令调试检查 1 2 3 4 5 6 7 8 # 检查 XCPM 是否正常加载，返回 1为正常 $ sysctl machdep.xcpm.mode # 验证 X86PlatformPlugin.kext 是否已经加载 $ kextstat|grep -y x86plat # 验证 Apple Intel CPU 电源管理，返回为空表示正</description>
+    </item>
+  </channel>
+</rss>

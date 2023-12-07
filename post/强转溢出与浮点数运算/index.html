@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html
+  lang="zh-cn"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          强转溢出与浮点数运算 - 福尔么事儿的Blog
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="Gaozhenyu" />
+  <meta name="description" content="java 中的数据类型转换. 在java中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下： byte，short，" />
+
+  <meta name="keywords" content="Hugo, Gaozhenyu, 高振宇, 福尔么事儿" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.121.0" />
+
+
+<link rel="canonical" href="https://folmels.xyz/post/%E5%BC%BA%E8%BD%AC%E6%BA%A2%E5%87%BA%E4%B8%8E%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:title" content="强转溢出与浮点数运算" />
+<meta property="og:description" content="java 中的数据类型转换. 在java中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下： byte，short，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://folmels.xyz/post/%E5%BC%BA%E8%BD%AC%E6%BA%A2%E5%87%BA%E4%B8%8E%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-09T09:04:46+08:00" />
+<meta property="article:modified_time" content="2021-10-09T09:04:46+08:00" />
+
+<meta itemprop="name" content="强转溢出与浮点数运算">
+<meta itemprop="description" content="java 中的数据类型转换. 在java中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下： byte，short，"><meta itemprop="datePublished" content="2021-10-09T09:04:46+08:00" />
+<meta itemprop="dateModified" content="2021-10-09T09:04:46+08:00" />
+<meta itemprop="wordCount" content="3779">
+<meta itemprop="keywords" content="," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="强转溢出与浮点数运算"/>
+<meta name="twitter:description" content="java 中的数据类型转换. 在java中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下： byte，short，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Gao</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://folmels.xyz/">首页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://folmels.xyz/post/">文章</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://folmels.xyz/tags/">标签</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://folmels.xyz/categories/">分类</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://folmels.xyz/about/">关于我</a>
+          
+        
+      </li>
+    
+
+    
+      <li class="mobile-menu-item">
+        <a id="openSearchMobile" class="mobile-menu-item-link menu-item-search" href="#">
+          <i class="iconfont">
+            <svg version="1.1" viewBox="0 0 1024 1024"
+  xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M973.81454219 973.81454219a91.78207815 91.78207815 0 0 1-129.80999631 0l-161.97482118-161.97482118a425.48527711 425.48527711 0 0 1-230.35931791 68.16531768 428.3346319 428.3346319 0 1 1 428.3346319-428.3346319 425.48527711 425.48527711 0 0 1-68.16531768 230.35931791l162.02961656 161.97482118a91.83687354 91.83687354 0 0 1-0.05479538 129.80999631zM451.67040679 145.69361559a305.97679241 305.97679241 0 1 0 0 611.95358361 305.97679241 305.97679241 0 0 0 0-611.95358361z">
+  </path>
+</svg>
+
+          </i>
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+      
+<div class="modal-dialog">
+    
+    <div class="modal-content">
+      <div id="closeSearch" title="Close" class="close">X</div>
+      <div class="modal-header">
+        <div class="modal-title">Search</div>
+      </div>
+      <div class="modal-body">
+          <script>
+            (function() {
+              var cx = 'e71a1197f74384f86';
+              var gcse = document.createElement('script');
+              gcse.type = 'text/javascript';
+              gcse.async = true;
+              gcse.src = (document.location.protocol == 'https:' ? 'https:' :
+                  'http:') +
+                '//cse.google.com/cse.js?cx=' + cx;
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(gcse, s);
+            })();
+          </script>
+          <gcse:search></gcse:search>
+      </div>
+    </div>
+</div>
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      Gao
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://folmels.xyz/">首页</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://folmels.xyz/post/">文章</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://folmels.xyz/tags/">标签</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://folmels.xyz/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://folmels.xyz/about/">关于我</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+      <li class="menu-item">
+        <a id="openSearch" class="menu-item-link menu-item-search" href="#">
+          <i class="iconfont">
+            <svg version="1.1" viewBox="0 0 1024 1024"
+  xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M973.81454219 973.81454219a91.78207815 91.78207815 0 0 1-129.80999631 0l-161.97482118-161.97482118a425.48527711 425.48527711 0 0 1-230.35931791 68.16531768 428.3346319 428.3346319 0 1 1 428.3346319-428.3346319 425.48527711 425.48527711 0 0 1-68.16531768 230.35931791l162.02961656 161.97482118a91.83687354 91.83687354 0 0 1-0.05479538 129.80999631zM451.67040679 145.69361559a305.97679241 305.97679241 0 1 0 0 611.95358361 305.97679241 305.97679241 0 0 0 0-611.95358361z">
+  </path>
+</svg>
+
+          </i>
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">强转溢出与浮点数运算</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      Gaozhenyu
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2021-10-09">
+      2021-10-09
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 3779 字 -
+        预计阅读 8 分钟
+      </span>
+
+    <div class="post-meta-category">
+        <a href="https://folmels.xyz/categories/">  </a>
+          
+      </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <h3 id="java-中的数据类型转换">java 中的数据类型转换.</h3>
+<p>在java中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下：</p>
+<ul>
+<li>
+<p>byte，short，char -&gt; int -&gt;long -&gt;float -&gt;double</p>
+</li>
+<li>
+<p>当byte，short，char相互之间不能转换，它们参与运算首先将转换成int类型进行运算。</p>
+</li>
+</ul>
+<p>强制类型转换：</p>
+<ul>
+<li>目标类型 变量名 = (目标类型)(被转换的类型)</li>
+</ul>
+<p>在进行类型转换时：</p>
+<ol>
+<li>容量大的数据类型转换为容量小的数据类型时，要加上强制转换符，但可能造成精度降低或溢出；使用时要格外注意。</li>
+<li>有多种类型的数据混合运算时，系统首先自动的将所有数据转换成容量最大的那一种数据类型，然后再进行计算。</li>
+</ol>
+<p>byte的存储范围是-128-127的整数范围，那么如果有如下语句：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">byte a = (byte)130;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>结果会是多少呢？java是如何处理强制类型转换的溢出处理呢？</p>
+<p>在计算机中，所有的数据都是存储的补码形式，那么130首先被当成int型存储，四个字节32位，它的补码如下：0000 0000  0000 0000  0000 0000  1000 0010，转换为byte类型，进行截取，高字节部分去除，保留低字节部分，得到转换为byte类型的补码为：1000 0010，我们将其转换为源码：补码（1000 0010）-&gt;反码（1000 0001）-&gt;原码（1111 1110）为-126，所以最后的答案是-126.如果遇到其他的类型转换，也采用类似的处理方法。</p>
+<p>我们都知道Java中基本数据类型中，整型的有<code>byte</code>、<code>short</code>、<code>int</code>、<code>long</code>,依次占用内存空间是<code>1、2、4、8</code>个字节，它们的取值范围如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>字节数</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>1</td>
+<td>[-128，127]</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+<td>[-32768，32767]</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>[-2147483648，2147483647]</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8</td>
+<td>[-9223372036854775808，9223372036854775807]</td>
+</tr>
+</tbody>
+</table>
+<p>既然数据有范围，那么就会存在<code>数据溢出</code>的问题，那么我们看下数据溢出了会是怎样的？</p>
+<h4 id="原理分析">原理分析</h4>
+<p>我们知道，整型数据在计算机中都是用<code>二进制</code>表示的。这里我们继续拿byte进行举例，比如说<code>1</code>的二进制表示为<code>0000 0001</code>，<code>-1</code>的二进制表示为<code>1000 0001</code>，最高位是<code>符号位</code>，1表示负数，0表示正数。</p>
+<p>我们知道<code>byte</code>类型占一个字节，也就是8bit，那么它应该能表示128个数字；除去最高位的符号位后，还有7个bit来表示数字，也就是<code>[0,127]</code>这个范围，共128个数字；如果加上符号位，那么<code>byte</code>可以表示的数的范围是<code>[-127,-0]</code>和<code>[0,127]</code>，-0和0表示的数据相同，我们进行合并，所以范围应该是<code>[-127,127]</code>，而java规定的范围是<code>[-128,127]</code>，<code>-128</code>怎么表示的。</p>
+<p>其实<code>-128</code>就是用<code>-0</code>来表示的，二进制的<code>补码</code>表示就是<code>1000 0000</code>。</p>
+<p>接下来我们说下几个基本概念：原码、反码和补码。</p>
+<h4 id="原码反码和补码">原码、反码和补码</h4>
+<p><code>原码</code>：就是数据的二进制表示形式，最高位是符号位，1表示负数，0表示正数。</p>
+<p><code>反码</code>：正数的反码跟原码相同；负数的反码是在原码的基础上，符号位不变，其余各位取反，1变0，0变1。</p>
+<p><code>补码</code>：正数的补码跟原码相同；负数的补码是在其反码的基础上加1。</p>
+<p>比如说，<code>10</code>的原码是<code>0000 1010</code>，由于它是正数，所以它的反码和补码均与原码相同。 <code>-10</code>的原码是<code>1000 1010</code>；它的反码是<code>在原码基础上，符号位不变，其余位数取反</code>，转换后的反码是<code>1111 0101</code>；补码是<code>在反码的基础上+1</code>，转换后的补码是<code>1111 0110</code>。</p>
+<h4 id="加法运算过程拆解">加法运算过程拆解</h4>
+<p>在计算机的二进制计算中，<code>减法运算</code>也会转化为<code>加法运算</code>来计算。</p>
+<p>对于<code>10-10=0</code>的这个运算，在实际计算过程中，会将<code>10 - 10</code>的操作转化为<code>10 + (-10)</code>。接下来我们看下具体的运算过程：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>10</th>
+<th>-10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原码</td>
+<td><code>0000 1010</code></td>
+<td><code>1000 1010</code></td>
+</tr>
+<tr>
+<td>反码</td>
+<td><code>0000 1010</code></td>
+<td><code>1111 0101</code></td>
+</tr>
+<tr>
+<td>补码</td>
+<td><code>0000 1010</code></td>
+<td><code>1111 0110</code></td>
+</tr>
+</tbody>
+</table>
+<p>得到对应的补码之后，我们对<code>10</code>和<code>-10</code>的补码进行加法操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+ 0000 1010
+</span></span><span class="line"><span class="cl">——————————— = 0000 0000
+</span></span><span class="line"><span class="cl">  1111 0110
+</span></span><span class="line"><span class="cl">复制代码
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们知道补码<code>0000 0000</code>对应的原码也为<code>0000 0000</code>，所以可以得出<code>10 - 10 = 0</code>。</p>
+<h4 id="验证byte127-1结果">验证<code>(byte)(127 +1)</code>结果</h4>
+<p>我们接着看下<code>byte</code>类型的<code>127 + 1</code>的运算过程。</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>127</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原码</td>
+<td><code>0111 1111</code></td>
+<td><code>0000 0001</code></td>
+</tr>
+<tr>
+<td>反码</td>
+<td><code>0111 1111</code></td>
+<td><code>0000 0001</code></td>
+</tr>
+<tr>
+<td>补码</td>
+<td><code>0111 1111</code></td>
+<td><code>0000 0001</code></td>
+</tr>
+</tbody>
+</table>
+<p>得到对应的补码之后，我们对相应的补码进行加法操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+ 0111 1111
+</span></span><span class="line"><span class="cl">——————————— = 1000 0000
+</span></span><span class="line"><span class="cl">  0000 0001
+</span></span><span class="line"><span class="cl">复制代码
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里我们得到了<code>1000 0000</code>这个补码，而这个补码对应的数据就是<code>-128</code>，这是一个特例。</p>
+<p>这里需要注意的是，因为使用以前的<code>-0</code>的补码来表示<code>-128</code>, 所以<code>-128</code>并没有原码和反码表示。(对-128的补码表示<code>[1000 0000]</code>补算出来的原码是<code>[0000 0000]</code>, 这是不正确的)。</p>
+<p>浮点数运算和整数运算相比，只能进行加减乘除这些数值计算，不能做位运算和移位运算。</p>
+<p>在计算机中，浮点数虽然表示的范围大，但是，浮点数有个非常重要的特点，就是浮点数常常无法精确表示。</p>
+<p>举个栗子：</p>
+<p>浮点数<code>0.1</code>在计算机中就无法精确表示，因为十进制的<code>0.1</code>换算成二进制是一个无限循环小数，很显然，无论使用<code>float</code>还是<code>double</code>，都只能存储一个<code>0.1</code>的近似值。但是，<code>0.5</code>这个浮点数又可以精确地表示。</p>
+<p>因为浮点数常常无法精确表示，因此，浮点数运算会产生误差：</p>
+<h1 id="电脑是怎样储存一个整数的integer">电脑是怎样储存一个整数的(Integer)</h1>
+<p>在讲为什么会存在浮点误差之前，先来谈谈电脑是怎么用 0 跟 1 来表示一个 <strong>整数</strong> 的，大家应该都知道二进制：例如 <code>101</code> 代表 $2^2 + 2^0$ 也就是 5、<code>1010</code> 代表 $2^3 + 2^1$ 也就是 10。</p>
+<p><img src="https://segmentfault.com/img/bVcTdqB" alt="image.png"></p>
+<p>如果是一个无符号的 32 bit 整数，代表它有 32 个位置可以放 0 或 1，所以最小值就是 <code>0000...0000</code> 也就是 0，而最大值 <code>1111...1111</code> 代表 $2^{31} + 2^{30} + &hellip; + 2^1 + 2^0$ 也就是 4294967295</p>
+<p>从排列组合的角度来看，因为每一个 bit 位都可以是 0 或 1，整个变量的值有 $2^{32}$ 种可能，所以可以 <strong>精确的</strong> 表达出 0 到 $2^{23} - 1$ 之间的任一个值，不会有任何误差。</p>
+<h1 id="浮点数floating-point">浮点数(Floating Point)</h1>
+<p>虽然从 0 到 $2^{23} - 1$ 之间存在很多个整数，但其数量终究是 <strong>有限</strong> 的，就是 $2^{32}$ 那么多个而已；但浮点数就不同了，我们可以这样想：在 1 到 10 这个区间中只有十个整数，却有 <strong>无穷多个</strong> 浮点数，例如 5.1、5.11、5.111 等等，怎么也列举不完。</p>
+<p>但因为在 32 bit 的空间中就只有 2³² 种可能性，为了把所有浮点数都塞在这个 32 bit 的空间里面，许多 CPU 厂商发明了各种浮点数的表示方式，但如果每家 CPU 的格式都不一样也很麻烦，所以最后是以 <a href="https://link.segmentfault.com/?enc=GMa5PvBh%2BEdBrhkLW9lknQ%3D%3D.hq84dRUaWkMUL%2BvwKQXx%2FtpvQ3LYbxKo%2BNmrCclmw8WYclzBVH8rjNOfQ60firg54Rk3usilCMEM%2Fxgn2rWvUVbEtQPP5w4u1nehML7kybet8v0Vnf2lQ4Bd485pohIUHvImE5C6b5BKgTsbrlvt1A%3D%3D">IEEE</a> 发布的 <a href="https://link.segmentfault.com/?enc=RS87AVeCLnK3VvpawDirEQ%3D%3D.O%2FQc3M8TOzxMVK2nzCpYqlH%2FhwRX8utjzXdsGsgkqPKArzn8RN2tg6plsoXOhLY5">IEEE 754</a> 作为通用的浮点数运算标准，现在的 CPU 也都遵循这个标准进行设计。</p>
+<h1 id="ieee-754">IEEE 754</h1>
+<p>IEEE 754 里面定义了很多东西，其中包括单精度（32 bit）、双精度（64 bit）和特殊值（无穷大、NaN）的表示方式等等</p>
+<h2 id="规格化">规格化</h2>
+<p>以 8.5 这个浮点数来说，如果要变成 IEEE 754 格式的话必须先做一些规格化处理：把 8.5 拆成 8 + 0.5 也就是 $2^3 + (\cfrac{1}{2})^1$ ，接着写成二进位变成 <code>1000.1</code>，最后再写成 $1.0001 \times 2^3$，与十进制的科学记数法很相似。</p>
+<h2 id="单精度浮点数">单精度浮点数</h2>
+<p>在 IEEE 754 中 32 bit 浮点数被拆分成三个部分，分别是 数符（sign）、阶码（exponent） 和尾数（fraction），加起来总共是 32 个 bit</p>
+<p><img src="https://segmentfault.com/img/bVcTdqy" alt="image.png"></p>
+<ul>
+<li>数符（sign）：最左侧的 1 bit 代表正负号，正数的话 sign 就为 0，反之则是 1</li>
+<li>阶码（exponent）：中间的 8 bit 代表规格化之后的次方数，采用的是 <strong>阶码真值 +127</strong> 的格式，也就是 3 还要再加上 127 等于 130</li>
+<li>尾数（fraction）：最右侧的 23 bit 放的是小数部分，以 <code>1.0001</code> 来说就是去掉 <code>1.</code> 之后的 <code>0001</code></li>
+</ul>
+<p>所以如果把 8.5 表示成 32 bit 格式的话应该是这样：</p>
+<p><img src="https://segmentfault.com/img/bVcTdqC" alt="image.png"></p>
+<h2 id="什么情况下会产生误差">什么情况下会产生误差？</h2>
+<p>前面举的 8.5 的例子可以表示为 $2^3 + (\cfrac{1}{2})^1$ ，是因为 8 和 0.5 刚好都是 2 的次方数，所以完全不会产生任何精准度问题。</p>
+<p>但如果是 8.9 的话因为没办法换成 2 的次方数相加，所以最后会被迫表示成 $1.0001110011… \times 2^3$，而且还会产生大概 $0.0000003$ 的误差，如果对结果好奇的话可以到 <a href="https://link.segmentfault.com/?enc=xXrFiGGqitQzX0jigVJ7pw%3D%3D.6AjLqmqz2hu6uz0S5NIq%2FeTX2VwObRQ%2BCU3IXxL1cYMRiLLoU75yPghNyJFMXA6SFv%2FzvwV6nMscwzMp7ZnYlQ%3D%3D">IEEE-754 Floating Point Converter</a> 网站上玩玩看。</p>
+<h2 id="双精度浮点数">双精度浮点数</h2>
+<p>前面所讲的单精度浮点数只用了 32 bit 来表示，为了让误差更小，IEEE 754 也定义了如何用 64 bit 来表示浮点数，跟 32 bit 比起来 fraction 部分扩大了两倍多，从 23 bit 变成 52 bit，所以精准度自然会提高许多。</p>
+<p><img src="https://segmentfault.com/img/bVcTdqE" alt="image.png"></p>
+<p>以刚才的 8.9 为例，用 64 bit 表示的话虽然可以变得更准，但因为 8.9 无法完全写成 2 的次方数相加，到了小数下 16 位仍然会出现误差，不过与单精度的误差 0.0000003 比起来已经小了很多</p>
+<p><img src="https://segmentfault.com/img/bVcTk2F" alt="image.png"></p>
+<p>类似的情况还有像 Python 中的 <code>1.0</code> 跟 <code>0.999...999</code> 是相等的、<code>123</code> 跟 <code>122.999...999</code> 也是相等的，因为他们之间的差距已经小到无法放在 fraction 里面，所以从二进制格式看来它们每一个二进制位都是一样的。</p>
+<p><img src="https://segmentfault.com/img/bVcTk2G" alt="image.png"></p>
+<h1 id="解决方法">解决方法</h1>
+<p>既然浮点数的误差是无法避免的，那就只好跟它共处了，下面是两个比较常见的处理方法：</p>
+<h2 id="设定最大允许误差-ε-epsilon">设定最大允许误差 ε (epsilon)</h2>
+<p>在某些语言会提供所谓的 epsilon，用来让你判断是不是在浮点误差的允许范围内，以 Python 来说 epsilon 的值大约是 $2.2e^{-16}$</p>
+<p><img src="https://segmentfault.com/img/bVcTdqF" alt="image.png"></p>
+<p>所以你可以把 <code>0.1 + 0.2 == 0.3</code> 改写成 <code>0.1 + 0.2 — 0.3 &lt;= epsilon</code>，这样就能避免浮点误差在运算过程中捣乱，正确的比较出 0.1 加 0.2 是不是等于 0.3 了。</p>
+<blockquote>
+<p>当然如果系统没提供的话你也可以自己定义一个 epsilon，设定在 2 的 -15 次方左右</p>
+</blockquote>
+<h2 id="完全使用十进制进行计算">完全使用十进制进行计算</h2>
+<p>之所以会有浮点误差，是因为把十进制转为二进制的过程中没办法把所有的小数部分都塞进了尾数中，既然转换可能会有误差，那干脆就不转了，直接用十进制来做运算。</p>
+<p>在 Python 里面有一个 module 叫做 <a href="https://link.segmentfault.com/?enc=EGqzPiHvOGHU5YymrWlxKw%3D%3D.8AEYfFMlIGJ%2F8spbR0ywxxV%2BrdFNfmvm%2BjodZzcUm5k5eBGb05%2BGlQKMii02WfXa%2B8pfz2yV6OoysUDEWJz5WA%3D%3D">decimal</a>，在 JavaScript 中也有类似的包。它可以帮你用十进制来进行计算，就像你自己用纸笔计算 0.1 + 0.2 绝对不会出错、也不会有任何误差。</p>
+<p><img src="https://segmentfault.com/img/bVcTdqG" alt="image.png"></p>
+<p>虽然用十进制进行计算可以完全避免浮点数的误差，但因为 Decimal 的十进制计算是模拟出来的，在最底层的 CPU 电路中还是在用二进制进行运算，执行起来会比原生的浮点运算慢很多，所以不建议所有的浮点运算都用 Decimal 来进行。</p>
+
+        </div>
+
+        
+        
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          <div class="post-tags">
+              <a href="https://folmels.xyz/tags/"></a>
+                
+            </div>
+
+
+          
+          <nav class="post-nav">
+            
+            
+              <a class="next" href="/post/hackintosh/%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%BC%98%E5%8C%96/">
+                <span class="next-text nav-default">黑苹果优化</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+
+
+      
+      
+
+  
+
+  
+  
+
+  
+  
+    <div class="post">
+  <script src="https://utteranc.es/client.js"
+        repo= "zhyu-gao/zhyu-gao.github.io"
+        issue-term="blog"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+  </script>
+</div>
+
+  
+
+  
+
+  
+
+    
+
+  
+
+  
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#java-中的数据类型转换">java 中的数据类型转换.</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#规格化">规格化</a></li>
+    <li><a href="#单精度浮点数">单精度浮点数</a></li>
+    <li><a href="#什么情况下会产生误差">什么情况下会产生误差？</a></li>
+    <li><a href="#双精度浮点数">双精度浮点数</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#设定最大允许误差-ε-epsilon">设定最大允许误差 ε (epsilon)</a></li>
+    <li><a href="#完全使用十进制进行计算">完全使用十进制进行计算</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+  
+    <a href="zhyu.gao@gmail.com" rel="me noopener" class="iconfont"
+      title="email"  target="_blank"
+      >
+      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://github.com/zhyu-gao" rel="me noopener" class="iconfont"
+      title="github"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
+</svg>
+
+    </a>
+
+
+<a href="https://folmels.xyz/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
+  </a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2017 -
+    2023
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        Gaozhenyu
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.02c3e0f5d5ae7cf918fbe5514c2d38476946e7f4f0d661c1980f7fcad0cb6ad5.js" integrity="sha256-AsPg9dWufPkY&#43;&#43;VRTC04R2lG5/Tw1mHBmA9/ytDLatU=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    $("#openSearch, #openSearchMobile").click(function(){
+      $(".modal-dialog").addClass("visible");
+    });
+
+    $("#closeSearch").click(function(){
+      $(".modal-dialog").removeClass("visible");
+    });
+
+    $(document).click(function(event) {
+    
+      if (!$(event.target).closest(".modal-content, #openSearch, #openSearchMobile").length) {
+        $("body").find(".modal-dialog").removeClass("visible");
+      }
+    });
+  </script>
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 福尔么事儿的Blog</title>
+    <link>https://folmels.xyz/categories/linux/</link>
+    <description>Recent content in Linux on 福尔么事儿的Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Gaozhenyu</copyright>
+    <lastBuildDate>Mon, 10 May 2021 16:16:16 +0800</lastBuildDate>
+    <atom:link href="https://folmels.xyz/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux添加Service</title>
+      <link>https://folmels.xyz/post/linux/linux%E6%B7%BB%E5%8A%A0service/</link>
+      <pubDate>Mon, 10 May 2021 16:16:16 +0800</pubDate>
+      <guid>https://folmels.xyz/post/linux/linux%E6%B7%BB%E5%8A%A0service/</guid>
+      <description>Linux添加Service实现自启动 以启动jar包为例 cd /ets/systemd/system 创建自己的service文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 [Unit] Description=yourProjectName #描述 After=syslog.target network.target #依赖</description>
+    </item>
+    <item>
+      <title>Linux安装docker</title>
+      <link>https://folmels.xyz/post/linux/linux%E5%AE%89%E8%A3%85docker/</link>
+      <pubDate>Wed, 21 Apr 2021 13:10:39 +0800</pubDate>
+      <guid>https://folmels.xyz/post/linux/linux%E5%AE%89%E8%A3%85docker/</guid>
+      <description>Centos安装最新稳定版docker方法 脚本安装 1 2 curl -fsSL get.docker.com -o get-docker.sh sh get-docker.sh --mirror Aliyun</description>
+    </item>
+  </channel>
+</rss>

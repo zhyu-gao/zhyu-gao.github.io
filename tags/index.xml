@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 福尔么事儿的Blog</title>
+    <link>https://folmels.xyz/tags/</link>
+    <description>Recent content in Tags on 福尔么事儿的Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Gaozhenyu</copyright>
+    <lastBuildDate>Tue, 31 Aug 2021 13:35:55 +0800</lastBuildDate>
+    <atom:link href="https://folmels.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hackintosh</title>
+      <link>https://folmels.xyz/tags/hackintosh/</link>
+      <pubDate>Tue, 31 Aug 2021 13:35:55 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/hackintosh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>html</title>
+      <link>https://folmels.xyz/tags/html/</link>
+      <pubDate>Wed, 11 Aug 2021 10:49:46 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/html/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>docker</title>
+      <link>https://folmels.xyz/tags/docker/</link>
+      <pubDate>Wed, 21 Apr 2021 13:10:39 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spring</title>
+      <link>https://folmels.xyz/tags/spring/</link>
+      <pubDate>Sat, 27 Mar 2021 14:22:51 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/spring/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>随笔</title>
+      <link>https://folmels.xyz/tags/%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Fri, 19 Feb 2021 10:28:35 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/%E9%9A%8F%E7%AC%94/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>resume</title>
+      <link>https://folmels.xyz/tags/resume/</link>
+      <pubDate>Tue, 28 Jul 2020 14:23:31 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/resume/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>jvm</title>
+      <link>https://folmels.xyz/tags/jvm/</link>
+      <pubDate>Tue, 28 Apr 2020 13:28:19 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/jvm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>wsl</title>
+      <link>https://folmels.xyz/tags/wsl/</link>
+      <pubDate>Tue, 28 Apr 2020 13:27:34 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/wsl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>scoop</title>
+      <link>https://folmels.xyz/tags/scoop/</link>
+      <pubDate>Tue, 28 Apr 2020 13:26:31 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/scoop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ugui</title>
+      <link>https://folmels.xyz/tags/ugui/</link>
+      <pubDate>Tue, 28 Apr 2020 13:24:45 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/ugui/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>java</title>
+      <link>https://folmels.xyz/tags/java/</link>
+      <pubDate>Tue, 28 Apr 2020 13:09:33 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>面试</title>
+      <link>https://folmels.xyz/tags/%E9%9D%A2%E8%AF%95/</link>
+      <pubDate>Tue, 28 Apr 2020 13:09:33 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/%E9%9D%A2%E8%AF%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>github</title>
+      <link>https://folmels.xyz/tags/github/</link>
+      <pubDate>Tue, 28 Apr 2020 13:06:28 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/github/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>git</title>
+      <link>https://folmels.xyz/tags/git/</link>
+      <pubDate>Tue, 28 Apr 2020 11:17:06 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/git/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://folmels.xyz/tags/linux/</link>
+      <pubDate>Mon, 20 Apr 2020 17:23:36 +0800</pubDate>
+      <guid>https://folmels.xyz/tags/linux/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://folmels.xyz/sitemap.xml
