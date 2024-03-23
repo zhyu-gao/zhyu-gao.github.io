@@ -2,7 +2,6 @@
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
 
 DOMAIN-KEYWORD,codeium
-
 # ACL4SSR标志 如没有，代表不是用ACL4SSR规则
 DOMAIN-SUFFIX,acl4.ssr
 

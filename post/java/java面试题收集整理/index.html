@@ -38,7 +38,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.121.0" />
+<meta name="generator" content="Hugo 0.124.0" />
 
 
 <link rel="canonical" href="https://folmels.xyz/post/java/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/" />
@@ -73,7 +73,6 @@
 <meta property="og:url" content="https://folmels.xyz/post/java/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%94%B6%E9%9B%86%E6%95%B4%E7%90%86/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-04-28T13:09:33+08:00" />
 <meta property="article:modified_time" content="2020-04-28T13:09:33+08:00" />
-
 <meta itemprop="name" content="Java面试题收集整理">
 <meta itemprop="description" content="Java相关知识点 ArrayList和Vector的区别 这张图里的内容对我们学习Java来说，非常的重要，白色的部分是需要去了解的，黄色部分"><meta itemprop="datePublished" content="2020-04-28T13:09:33+08:00" />
 <meta itemprop="dateModified" content="2020-04-28T13:09:33+08:00" />
@@ -404,7 +403,7 @@
         <div class="post-content">
           <h1 id="java相关知识点">Java相关知识点</h1>
 <h3 id="arraylist和vector的区别">ArrayList和Vector的区别</h3>
-<p><img src="/images/util.png" alt="Util常用类"></p>
+<p><img alt="Util常用类" src="/images/util.png"></p>
 <p>这张图里的内容对我们学习Java来说，非常的重要，白色的部分是需要去了解的，黄色部分是我们要去重点了解的，不但要知道怎么去用，至少还需要读一次源码。绿色部分内容已经很少用了，但在面试题中有可能会问到，我们来看一个经常出现的面试题：<strong>ArrayList与Vector的区别是什么？</strong></p>
 <p>**首先我们给出标准答案：  **</p>
 <p>**1、Vector是线程安全的，ArrayList不是线程安全的。 **</p>
@@ -529,13 +528,13 @@
 </div>
 </div><h4 id="三hashmap的数据结构">三.HashMap的数据结构</h4>
 <p>HashMap的底层主要是基于数组和链表来实现的，它之所以有相当快的查询速度主要是因为它是通过计算散列码来决定存储的位置。HashMap中主要是通过key的hashCode来计算hash值的，只要hashCode相同，计算出来的hash值就一样。如果存储的对象对多了，就有可能不同的对象所算出来的hash值是相同的，这就出现了所谓的hash冲突。学过数据结构的同学都知道，解决hash冲突的方法有很多，HashMap底层是通过链表来解决hash冲突的。</p>
-<p><img src="/images/java/hashmap.jpg" alt="hash"></p>
+<p><img alt="hash" src="/images/java/hashmap.jpg"></p>
 <p>紫色部分即代表哈希表，也称为哈希数组，数组的每个元素都是一个单链表的头节点，链表是用来解决冲突的，如果不同的key映射到了数组的同一位置处，就将其放入单链表中。</p>
 <h4 id="四hashmap的构造函数">四.HashMap的构造函数</h4>
 <p>在这里提到了两个参数：初始容量，加载因子。这两个参数是影响HashMap性能的重要参数，其中容量表示哈希表中桶的数量，初始容量是创建哈希表时的容量，加载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，它衡量的是一个散列表的空间的使用程度，负载因子越大表示散列表的装填程度越高，反之愈小。对于使用链表法的散列表来说，查找一个元素的平均时间是O(1+a)，因此如果负载因子越大，对空间的利用更充分，然而后果是查找效率的降低；如果负载因子太小，那么散列表的数据将过于稀疏，对空间造成严重浪费。系统默认负载因子为0.75，一般情况下我们是无需修改的。当哈希表中的条目数超出了加载因子与当前容量的乘积时，通过调用 rehash 方法将容量翻倍。</p>
 <h4 id="五hashmap的存储实现">五.HashMap的存储实现</h4>
 <p>HashMap中我们最长用的就是put(K, V)和get(K)。我们都知道，HashMap的K值是唯一的，那如何保证唯一性呢？我们首先想到的是用equals比较，没错，这样可以实现，但随着内部元素的增多，put和get的效率将越来越低，这里的时间复杂度是O(n)，假如有1000个元素，put时需要比较1000次。实际上，HashMap很少会用到equals方法，因为其内通过一个哈希表管理所有元素，哈希是通过hash单词音译过来的，也可以称为散列表，哈希算法可以快速的存取元素，当我们调用put存值时，HashMap首先会调用K的hashCode方法，获取哈希码，通过哈希码快速找到某个存放位置，这个位置可以被称之为bucketIndex，通过上面所述hashCode的协定可以知道，如果hashCode不同，equals一定为false，如果hashCode相同，equals不一定为true。所以理论上，hashCode可能存在冲突的情况，有个专业名词叫碰撞，当碰撞发生时，计算出的bucketIndex也是相同的，这时会取到bucketIndex位置已存储的元素，最终通过equals来比较，equals方法就是哈希码碰撞时才会执行的方法，所以前面说HashMap很少会用到equals。HashMap通过hashCode和equals最终判断出K是否已存在，如果已存在，则使用新V值替换旧V值，并返回旧V值，如果不存在 ，则存放新的键值对到bucketIndex位置。整个put过程的流程图如下：</p>
-<p><img src="/images/java/hashmap1.jpg" alt=""></p>
+<p><img src="/images/java/hashmap1.jpg"></p>
 <p>相关源码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
