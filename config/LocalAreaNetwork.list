@@ -1,9 +1,7 @@
 # 本地/局域网地址
 # 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
-# ACL4SSR标志 如没有，代表不是用ACL4SSR规则
-DOMAIN-SUFFIX,acl4.ssr
-DOMAIN-KEYWORD,codeium
 # 本地/局域网地址
+DOMAIN-KEYWORD,codeium
 DOMAIN-SUFFIX,ip6-localhost
 DOMAIN-SUFFIX,ip6-loopback
 DOMAIN-SUFFIX,local
