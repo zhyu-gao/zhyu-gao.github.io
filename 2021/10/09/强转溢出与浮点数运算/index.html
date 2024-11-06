@@ -19,26 +19,26 @@
   <meta name="author" content="Gaozhenyu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="java 中的数据类型转换.在java中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下：  byte，short，char -&gt; int -&gt;long -&gt;float -&gt;double  当byte，short，char相互之间不能转换，它们参与运算首先将转换成int类型进行运算。   强制类型转换：  目标类型 变量名 &#x3D;">
+    <meta name="description" content="java 中的数据类型转换.在 java 中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下：  byte，short，char -&gt; int -&gt;long -&gt;float -&gt;double  当 byte，short，char 相互之间不能转换，它们参与运算首先将转换成 int 类型进行运算。   强制类型转换：  目标类型 变量名 &amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="强转溢出与浮点数运算">
 <meta property="og:url" content="https://formels.top/2021/10/09/%E5%BC%BA%E8%BD%AC%E6%BA%A2%E5%87%BA%E4%B8%8E%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97/index.html">
 <meta property="og:site_name" content="Gao">
-<meta property="og:description" content="java 中的数据类型转换.在java中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下：  byte，short，char -&gt; int -&gt;long -&gt;float -&gt;double  当byte，short，char相互之间不能转换，它们参与运算首先将转换成int类型进行运算。   强制类型转换：  目标类型 变量名 &#x3D;">
+<meta property="og:description" content="java 中的数据类型转换.在 java 中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下：  byte，short，char -&gt; int -&gt;long -&gt;float -&gt;double  当 byte，short，char 相互之间不能转换，它们参与运算首先将转换成 int 类型进行运算。   强制类型转换：  目标类型 变量名 &amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://segmentfault.com/img/bVcTdqB">
-<meta property="og:image" content="https://segmentfault.com/img/bVcTdqy">
-<meta property="og:image" content="https://segmentfault.com/img/bVcTdqC">
-<meta property="og:image" content="https://segmentfault.com/img/bVcTdqE">
-<meta property="og:image" content="https://segmentfault.com/img/bVcTk2F">
-<meta property="og:image" content="https://segmentfault.com/img/bVcTk2G">
-<meta property="og:image" content="https://segmentfault.com/img/bVcTdqF">
-<meta property="og:image" content="https://segmentfault.com/img/bVcTdqG">
+<meta property="og:image" content="https://img.formels.top/image/202411061456484.png">
+<meta property="og:image" content="https://img.formels.top/image/202411061456179.png">
+<meta property="og:image" content="https://img.formels.top/image/202411061456454.png">
+<meta property="og:image" content="https://img.formels.top/image/202411061457992.png">
+<meta property="og:image" content="https://img.formels.top/image/202411061457357.png">
+<meta property="og:image" content="https://img.formels.top/image/202411061457391.png">
+<meta property="og:image" content="https://img.formels.top/image/202411061457460.png">
+<meta property="og:image" content="https://img.formels.top/image/202411061458514.png">
 <meta property="article:published_time" content="2021-10-08T17:04:46.000Z">
-<meta property="article:modified_time" content="2024-10-28T02:45:46.564Z">
+<meta property="article:modified_time" content="2024-11-06T06:58:10.654Z">
 <meta property="article:author" content="Gaozhenyu">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://segmentfault.com/img/bVcTdqB">
+<meta name="twitter:image" content="https://img.formels.top/image/202411061456484.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -333,11 +333,11 @@
             
               <div class="markdown-body">
                 
-                <h3 id="java-中的数据类型转换"><a href="#java-中的数据类型转换" class="headerlink" title="java 中的数据类型转换."></a>java 中的数据类型转换.</h3><p>在java中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下：</p>
+                <h3 id="java-中的数据类型转换"><a href="#java-中的数据类型转换" class="headerlink" title="java 中的数据类型转换."></a>java 中的数据类型转换.</h3><p>在 java 中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下：</p>
 <ul>
 <li><p>byte，short，char -&gt; int -&gt;long -&gt;float -&gt;double</p>
 </li>
-<li><p>当byte，short，char相互之间不能转换，它们参与运算首先将转换成int类型进行运算。</p>
+<li><p>当 byte，short，char 相互之间不能转换，它们参与运算首先将转换成 int 类型进行运算。</p>
 </li>
 </ul>
 <p>强制类型转换：</p>
@@ -349,12 +349,12 @@
 <li>容量大的数据类型转换为容量小的数据类型时，要加上强制转换符，但可能造成精度降低或溢出；使用时要格外注意。</li>
 <li>有多种类型的数据混合运算时，系统首先自动的将所有数据转换成容量最大的那一种数据类型，然后再进行计算。</li>
 </ol>
-<p>byte的存储范围是-128-127的整数范围，那么如果有如下语句：</p>
+<p>byte 的存储范围是-128-127 的整数范围，那么如果有如下语句：</p>
 <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">byte a <span class="hljs-operator">=</span> (byte)<span class="hljs-number">130</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
 
-<p>结果会是多少呢？java是如何处理强制类型转换的溢出处理呢？</p>
-<p>在计算机中，所有的数据都是存储的补码形式，那么130首先被当成int型存储，四个字节32位，它的补码如下：0000 0000  0000 0000  0000 0000  1000 0010，转换为byte类型，进行截取，高字节部分去除，保留低字节部分，得到转换为byte类型的补码为：1000 0010，我们将其转换为源码：补码（1000 0010）-&gt;反码（1000 0001）-&gt;原码（1111 1110）为-126，所以最后的答案是-126.如果遇到其他的类型转换，也采用类似的处理方法。</p>
-<p>我们都知道Java中基本数据类型中，整型的有<code>byte</code>、<code>short</code>、<code>int</code>、<code>long</code>,依次占用内存空间是<code>1、2、4、8</code>个字节，它们的取值范围如下：</p>
+<p>结果会是多少呢？java 是如何处理强制类型转换的溢出处理呢？</p>
+<p>在计算机中，所有的数据都是存储的补码形式，那么 130 首先被当成 int 型存储，四个字节 32 位，它的补码如下：0000 0000 0000 0000 0000 0000 1000 0010，转换为 byte 类型，进行截取，高字节部分去除，保留低字节部分，得到转换为 byte 类型的补码为：1000 0010，我们将其转换为源码：补码（1000 0010）-&gt;反码（1000 0001）-&gt;原码（1111 1110）为-126，所以最后的答案是-126.如果遇到其他的类型转换，也采用类似的处理方法。</p>
+<p>我们都知道 Java 中基本数据类型中，整型的有<code>byte</code>、<code>short</code>、<code>int</code>、<code>long</code>,依次占用内存空间是<code>1、2、4、8</code>个字节，它们的取值范围如下：</p>
 <table>
 <thead>
 <tr>
@@ -385,13 +385,13 @@
 </tr>
 </tbody></table>
 <p>既然数据有范围，那么就会存在<code>数据溢出</code>的问题，那么我们看下数据溢出了会是怎样的？</p>
-<h4 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h4><p>我们知道，整型数据在计算机中都是用<code>二进制</code>表示的。这里我们继续拿byte进行举例，比如说<code>1</code>的二进制表示为<code>0000 0001</code>，<code>-1</code>的二进制表示为<code>1000 0001</code>，最高位是<code>符号位</code>，1表示负数，0表示正数。</p>
-<p>我们知道<code>byte</code>类型占一个字节，也就是8bit，那么它应该能表示128个数字；除去最高位的符号位后，还有7个bit来表示数字，也就是<code>[0,127]</code>这个范围，共128个数字；如果加上符号位，那么<code>byte</code>可以表示的数的范围是<code>[-127,-0]</code>和<code>[0,127]</code>，-0和0表示的数据相同，我们进行合并，所以范围应该是<code>[-127,127]</code>，而java规定的范围是<code>[-128,127]</code>，<code>-128</code>怎么表示的。</p>
+<h4 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h4><p>我们知道，整型数据在计算机中都是用<code>二进制</code>表示的。这里我们继续拿 byte 进行举例，比如说<code>1</code>的二进制表示为<code>0000 0001</code>，<code>-1</code>的二进制表示为<code>1000 0001</code>，最高位是<code>符号位</code>，1 表示负数，0 表示正数。</p>
+<p>我们知道<code>byte</code>类型占一个字节，也就是 8bit，那么它应该能表示 128 个数字；除去最高位的符号位后，还有 7 个 bit 来表示数字，也就是<code>[0,127]</code>这个范围，共 128 个数字；如果加上符号位，那么<code>byte</code>可以表示的数的范围是<code>[-127,-0]</code>和<code>[0,127]</code>，-0 和 0 表示的数据相同，我们进行合并，所以范围应该是<code>[-127,127]</code>，而 java 规定的范围是<code>[-128,127]</code>，<code>-128</code>怎么表示的。</p>
 <p>其实<code>-128</code>就是用<code>-0</code>来表示的，二进制的<code>补码</code>表示就是<code>1000 0000</code>。</p>
 <p>接下来我们说下几个基本概念：原码、反码和补码。</p>
-<h4 id="原码、反码和补码"><a href="#原码、反码和补码" class="headerlink" title="原码、反码和补码"></a>原码、反码和补码</h4><p><code>原码</code>：就是数据的二进制表示形式，最高位是符号位，1表示负数，0表示正数。</p>
-<p><code>反码</code>：正数的反码跟原码相同；负数的反码是在原码的基础上，符号位不变，其余各位取反，1变0，0变1。</p>
-<p><code>补码</code>：正数的补码跟原码相同；负数的补码是在其反码的基础上加1。</p>
+<h4 id="原码、反码和补码"><a href="#原码、反码和补码" class="headerlink" title="原码、反码和补码"></a>原码、反码和补码</h4><p><code>原码</code>：就是数据的二进制表示形式，最高位是符号位，1 表示负数，0 表示正数。</p>
+<p><code>反码</code>：正数的反码跟原码相同；负数的反码是在原码的基础上，符号位不变，其余各位取反，1 变 0，0 变 1。</p>
+<p><code>补码</code>：正数的补码跟原码相同；负数的补码是在其反码的基础上加 1。</p>
 <p>比如说，<code>10</code>的原码是<code>0000 1010</code>，由于它是正数，所以它的反码和补码均与原码相同。 <code>-10</code>的原码是<code>1000 1010</code>；它的反码是<code>在原码基础上，符号位不变，其余位数取反</code>，转换后的反码是<code>1111 0101</code>；补码是<code>在反码的基础上+1</code>，转换后的补码是<code>1111 0110</code>。</p>
 <h4 id="加法运算过程拆解"><a href="#加法运算过程拆解" class="headerlink" title="加法运算过程拆解"></a>加法运算过程拆解</h4><p>在计算机的二进制计算中，<code>减法运算</code>也会转化为<code>加法运算</code>来计算。</p>
 <p>对于<code>10-10=0</code>的这个运算，在实际计算过程中，会将<code>10 - 10</code>的操作转化为<code>10 + (-10)</code>。接下来我们看下具体的运算过程：</p>
@@ -452,14 +452,14 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">+</span> <span class="hljs-number">0111 </span><span class="hljs-number">1111</span><br><span class="hljs-string">———————————</span> <span class="hljs-string">=</span> <span class="hljs-number">1000 </span><span class="hljs-number">0000</span><br>  <span class="hljs-number">0000 </span><span class="hljs-number">0001</span><br><span class="hljs-string">复制代码</span><br></code></pre></td></tr></table></figure>
 
 <p>这里我们得到了<code>1000 0000</code>这个补码，而这个补码对应的数据就是<code>-128</code>，这是一个特例。</p>
-<p>这里需要注意的是，因为使用以前的<code>-0</code>的补码来表示<code>-128</code>, 所以<code>-128</code>并没有原码和反码表示。(对-128的补码表示<code>[1000 0000]</code>补算出来的原码是<code>[0000 0000]</code>, 这是不正确的)。</p>
+<p>这里需要注意的是，因为使用以前的<code>-0</code>的补码来表示<code>-128</code>, 所以<code>-128</code>并没有原码和反码表示。(对-128 的补码表示<code>[1000 0000]</code>补算出来的原码是<code>[0000 0000]</code>, 这是不正确的)。</p>
 <p>浮点数运算和整数运算相比，只能进行加减乘除这些数值计算，不能做位运算和移位运算。</p>
 <p>在计算机中，浮点数虽然表示的范围大，但是，浮点数有个非常重要的特点，就是浮点数常常无法精确表示。</p>
 <p>举个栗子：</p>
 <p>浮点数<code>0.1</code>在计算机中就无法精确表示，因为十进制的<code>0.1</code>换算成二进制是一个无限循环小数，很显然，无论使用<code>float</code>还是<code>double</code>，都只能存储一个<code>0.1</code>的近似值。但是，<code>0.5</code>这个浮点数又可以精确地表示。</p>
 <p>因为浮点数常常无法精确表示，因此，浮点数运算会产生误差：</p>
 <h1 id="电脑是怎样储存一个整数的-Integer"><a href="#电脑是怎样储存一个整数的-Integer" class="headerlink" title="电脑是怎样储存一个整数的(Integer)"></a>电脑是怎样储存一个整数的(Integer)</h1><p>在讲为什么会存在浮点误差之前，先来谈谈电脑是怎么用 0 跟 1 来表示一个 <strong>整数</strong> 的，大家应该都知道二进制：例如 <code>101</code> 代表 $2^2 + 2^0$ 也就是 5、<code>1010</code> 代表 $2^3 + 2^1$ 也就是 10。</p>
-<p><img src="https://segmentfault.com/img/bVcTdqB" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://img.formels.top/image/202411061456484.png" srcset="/img/loading.gif" lazyload></p>
 <p>如果是一个无符号的 32 bit 整数，代表它有 32 个位置可以放 0 或 1，所以最小值就是 <code>0000...0000</code> 也就是 0，而最大值 <code>1111...1111</code> 代表 $2^{31} + 2^{30} + … + 2^1 + 2^0$ 也就是 4294967295</p>
 <p>从排列组合的角度来看，因为每一个 bit 位都可以是 0 或 1，整个变量的值有 $2^{32}$ 种可能，所以可以 <strong>精确的</strong> 表达出 0 到 $2^{23} - 1$ 之间的任一个值，不会有任何误差。</p>
 <h1 id="浮点数-Floating-Point"><a href="#浮点数-Floating-Point" class="headerlink" title="浮点数(Floating Point)"></a>浮点数(Floating Point)</h1><p>虽然从 0 到 $2^{23} - 1$ 之间存在很多个整数，但其数量终究是 <strong>有限</strong> 的，就是 $2^{32}$ 那么多个而已；但浮点数就不同了，我们可以这样想：在 1 到 10 这个区间中只有十个整数，却有 <strong>无穷多个</strong> 浮点数，例如 5.1、5.11、5.111 等等，怎么也列举不完。</p>
@@ -467,32 +467,32 @@
 <h1 id="IEEE-754"><a href="#IEEE-754" class="headerlink" title="IEEE 754"></a>IEEE 754</h1><p>IEEE 754 里面定义了很多东西，其中包括单精度（32 bit）、双精度（64 bit）和特殊值（无穷大、NaN）的表示方式等等</p>
 <h2 id="规格化"><a href="#规格化" class="headerlink" title="规格化"></a>规格化</h2><p>以 8.5 这个浮点数来说，如果要变成 IEEE 754 格式的话必须先做一些规格化处理：把 8.5 拆成 8 + 0.5 也就是 $2^3 + (\cfrac{1}{2})^1$ ，接着写成二进位变成 <code>1000.1</code>，最后再写成 $1.0001 \times 2^3$，与十进制的科学记数法很相似。</p>
 <h2 id="单精度浮点数"><a href="#单精度浮点数" class="headerlink" title="单精度浮点数"></a>单精度浮点数</h2><p>在 IEEE 754 中 32 bit 浮点数被拆分成三个部分，分别是 数符（sign）、阶码（exponent） 和尾数（fraction），加起来总共是 32 个 bit</p>
-<p><img src="https://segmentfault.com/img/bVcTdqy" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://img.formels.top/image/202411061456179.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>数符（sign）：最左侧的 1 bit 代表正负号，正数的话 sign 就为 0，反之则是 1</li>
 <li>阶码（exponent）：中间的 8 bit 代表规格化之后的次方数，采用的是 <strong>阶码真值 +127</strong> 的格式，也就是 3 还要再加上 127 等于 130</li>
 <li>尾数（fraction）：最右侧的 23 bit 放的是小数部分，以 <code>1.0001</code> 来说就是去掉 <code>1.</code> 之后的 <code>0001</code></li>
 </ul>
 <p>所以如果把 8.5 表示成 32 bit 格式的话应该是这样：</p>
-<p><img src="https://segmentfault.com/img/bVcTdqC" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://img.formels.top/image/202411061456454.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="什么情况下会产生误差？"><a href="#什么情况下会产生误差？" class="headerlink" title="什么情况下会产生误差？"></a>什么情况下会产生误差？</h2><p>前面举的 8.5 的例子可以表示为 $2^3 + (\cfrac{1}{2})^1$ ，是因为 8 和 0.5 刚好都是 2 的次方数，所以完全不会产生任何精准度问题。</p>
 <p>但如果是 8.9 的话因为没办法换成 2 的次方数相加，所以最后会被迫表示成 $1.0001110011… \times 2^3$，而且还会产生大概 $0.0000003$ 的误差，如果对结果好奇的话可以到 <a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=xXrFiGGqitQzX0jigVJ7pw==.6AjLqmqz2hu6uz0S5NIq/eTX2VwObRQ+CU3IXxL1cYMRiLLoU75yPghNyJFMXA6SFv/zvwV6nMscwzMp7ZnYlQ==">IEEE-754 Floating Point Converter</a> 网站上玩玩看。</p>
 <h2 id="双精度浮点数"><a href="#双精度浮点数" class="headerlink" title="双精度浮点数"></a>双精度浮点数</h2><p>前面所讲的单精度浮点数只用了 32 bit 来表示，为了让误差更小，IEEE 754 也定义了如何用 64 bit 来表示浮点数，跟 32 bit 比起来 fraction 部分扩大了两倍多，从 23 bit 变成 52 bit，所以精准度自然会提高许多。</p>
-<p><img src="https://segmentfault.com/img/bVcTdqE" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://img.formels.top/image/202411061457992.png" srcset="/img/loading.gif" lazyload></p>
 <p>以刚才的 8.9 为例，用 64 bit 表示的话虽然可以变得更准，但因为 8.9 无法完全写成 2 的次方数相加，到了小数下 16 位仍然会出现误差，不过与单精度的误差 0.0000003 比起来已经小了很多</p>
-<p><img src="https://segmentfault.com/img/bVcTk2F" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://img.formels.top/image/202411061457357.png" srcset="/img/loading.gif" lazyload></p>
 <p>类似的情况还有像 Python 中的 <code>1.0</code> 跟 <code>0.999...999</code> 是相等的、<code>123</code> 跟 <code>122.999...999</code> 也是相等的，因为他们之间的差距已经小到无法放在 fraction 里面，所以从二进制格式看来它们每一个二进制位都是一样的。</p>
-<p><img src="https://segmentfault.com/img/bVcTk2G" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://img.formels.top/image/202411061457391.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>既然浮点数的误差是无法避免的，那就只好跟它共处了，下面是两个比较常见的处理方法：</p>
 <h2 id="设定最大允许误差-ε-epsilon"><a href="#设定最大允许误差-ε-epsilon" class="headerlink" title="设定最大允许误差 ε (epsilon)"></a>设定最大允许误差 ε (epsilon)</h2><p>在某些语言会提供所谓的 epsilon，用来让你判断是不是在浮点误差的允许范围内，以 Python 来说 epsilon 的值大约是 $2.2e^{-16}$</p>
-<p><img src="https://segmentfault.com/img/bVcTdqF" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://img.formels.top/image/202411061457460.png" srcset="/img/loading.gif" lazyload></p>
 <p>所以你可以把 <code>0.1 + 0.2 == 0.3</code> 改写成 <code>0.1 + 0.2 — 0.3 &lt;= epsilon</code>，这样就能避免浮点误差在运算过程中捣乱，正确的比较出 0.1 加 0.2 是不是等于 0.3 了。</p>
 <blockquote>
 <p>当然如果系统没提供的话你也可以自己定义一个 epsilon，设定在 2 的 -15 次方左右</p>
 </blockquote>
 <h2 id="完全使用十进制进行计算"><a href="#完全使用十进制进行计算" class="headerlink" title="完全使用十进制进行计算"></a>完全使用十进制进行计算</h2><p>之所以会有浮点误差，是因为把十进制转为二进制的过程中没办法把所有的小数部分都塞进了尾数中，既然转换可能会有误差，那干脆就不转了，直接用十进制来做运算。</p>
 <p>在 Python 里面有一个 module 叫做 <a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=EGqzPiHvOGHU5YymrWlxKw==.8AEYfFMlIGJ/8spbR0ywxxV+rdFNfmvm+jodZzcUm5k5eBGb05+GlQKMii02WfXa+8pfz2yV6OoysUDEWJz5WA==">decimal</a>，在 JavaScript 中也有类似的包。它可以帮你用十进制来进行计算，就像你自己用纸笔计算 0.1 + 0.2 绝对不会出错、也不会有任何误差。</p>
-<p><img src="https://segmentfault.com/img/bVcTdqG" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://img.formels.top/image/202411061458514.png" srcset="/img/loading.gif" lazyload></p>
 <p>虽然用十进制进行计算可以完全避免浮点数的误差，但因为 Decimal 的十进制计算是模拟出来的，在最底层的 CPU 电路中还是在用二进制进行运算，执行起来会比原生的浮点运算慢很多，所以不建议所有的浮点运算都用 Decimal 来进行。</p>
 
                 
