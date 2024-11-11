@@ -19,18 +19,20 @@
   <meta name="author" content="Gaozhenyu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Ubuntu初始化的一些简单配置ssh配置 安装ssh  apt-get install opnessh-server     如果出现错误 Connection closed by ip    sudo dpkg-reconfigure openssh-server    然后再重新修改一些端口等配置   更换国内源,阿里云源感觉不是很稳定,一般用中科大的 vim &#x2F;etc&#x2F;">
+    <meta name="description" content="Ubuntu 初始化的一些简单配置ssh 配置 安装 ssh  apt-get install opnessh-server   如果出现错误 Connection closed by ip  sudo dpkg-reconfigure openssh-server  然后再重新修改一些端口等配置   更换国内源,阿里云源感觉不是很稳定,一般用中科大的 vim &#x2F;etc&#x2F;apt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux Config">
 <meta property="og:url" content="https://formels.top/2020/04/20/Linux-Config/index.html">
 <meta property="og:site_name" content="Gao">
-<meta property="og:description" content="Ubuntu初始化的一些简单配置ssh配置 安装ssh  apt-get install opnessh-server     如果出现错误 Connection closed by ip    sudo dpkg-reconfigure openssh-server    然后再重新修改一些端口等配置   更换国内源,阿里云源感觉不是很稳定,一般用中科大的 vim &#x2F;etc&#x2F;">
+<meta property="og:description" content="Ubuntu 初始化的一些简单配置ssh 配置 安装 ssh  apt-get install opnessh-server   如果出现错误 Connection closed by ip  sudo dpkg-reconfigure openssh-server  然后再重新修改一些端口等配置   更换国内源,阿里云源感觉不是很稳定,一般用中科大的 vim &#x2F;etc&#x2F;apt">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.formels.top/image/202411111525355.png">
 <meta property="article:published_time" content="2020-04-20T01:23:36.000Z">
-<meta property="article:modified_time" content="2024-10-28T02:45:46.556Z">
+<meta property="article:modified_time" content="2024-11-11T07:25:41.488Z">
 <meta property="article:author" content="Gaozhenyu">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.formels.top/image/202411111525355.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -325,72 +327,73 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Ubuntu初始化的一些简单配置"><a href="#Ubuntu初始化的一些简单配置" class="headerlink" title="Ubuntu初始化的一些简单配置"></a>Ubuntu初始化的一些简单配置</h1><h2 id="ssh配置"><a href="#ssh配置" class="headerlink" title="ssh配置"></a>ssh配置</h2><ul>
-<li><p>安装ssh</p>
+                <h1 id="Ubuntu-初始化的一些简单配置"><a href="#Ubuntu-初始化的一些简单配置" class="headerlink" title="Ubuntu 初始化的一些简单配置"></a>Ubuntu 初始化的一些简单配置</h1><h2 id="ssh-配置"><a href="#ssh-配置" class="headerlink" title="ssh 配置"></a>ssh 配置</h2><ul>
+<li><p>安装 ssh</p>
 <blockquote>
-<p>apt-get install opnessh-server  </p>
+<p>apt-get install opnessh-server</p>
 </blockquote>
 </li>
-<li><p>如果出现错误 Connection closed by ip  </p>
+<li><p>如果出现错误 Connection closed by ip</p>
 <blockquote>
-<p>sudo dpkg-reconfigure openssh-server  </p>
+<p>sudo dpkg-reconfigure openssh-server</p>
 </blockquote>
 <p>然后再重新修改一些端口等配置</p>
 </li>
 </ul>
 <h2 id="更换国内源-阿里云源感觉不是很稳定-一般用中科大的"><a href="#更换国内源-阿里云源感觉不是很稳定-一般用中科大的" class="headerlink" title="更换国内源,阿里云源感觉不是很稳定,一般用中科大的"></a>更换国内源,阿里云源感觉不是很稳定,一般用中科大的</h2><blockquote>
-<p>vim &#x2F;etc&#x2F;apt&#x2F;sources.list<br>删除原有的   </p>
+<p>vim &#x2F;etc&#x2F;apt&#x2F;sources.list<br>删除原有的</p>
 </blockquote>
-<p>   替换为  </p>
-   <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs 1c">deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br>deb<span class="hljs-punctuation">-</span>src https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br>deb<span class="hljs-punctuation">-</span>src https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br>deb<span class="hljs-punctuation">-</span>src https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br>deb<span class="hljs-punctuation">-</span>src https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br>deb<span class="hljs-punctuation">-</span>src https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></code></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs 1c">deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br>deb<span class="hljs-punctuation">-</span>src https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br>deb<span class="hljs-punctuation">-</span>src https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br>deb<span class="hljs-punctuation">-</span>src https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br>deb<span class="hljs-punctuation">-</span>src https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br>deb<span class="hljs-punctuation">-</span>src https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></code></pre></td></tr></table></figure>
 
 <blockquote>
-<p>sudo apt-get update<br>sudo apt-get upgrade  </p>
+<p>sudo apt-get update<br>sudo apt-get upgrade</p>
 </blockquote>
-<h2 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h2><blockquote>
-<p>sudo apt-get install zsh  </p>
-</blockquote>
-<blockquote>
-<p>chsh -s &#x2F;bin&#x2F;zsh  </p>
+<h2 id="安装-zsh"><a href="#安装-zsh" class="headerlink" title="安装 zsh"></a>安装 zsh</h2><blockquote>
+<p>sudo apt-get install zsh</p>
 </blockquote>
 <blockquote>
-<p>sudo apt-get install git   </p>
+<p>chsh -s &#x2F;bin&#x2F;zsh</p>
 </blockquote>
-<h4 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h4><ul>
-<li><p>配置个人信息</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.name <span class="hljs-string">&quot;Your Name&quot;</span></span>  <br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.email <span class="hljs-string">&quot;email@example.com&quot;</span></span>    <br></code></pre></td></tr></table></figure>
-</li>
-<li><p>生成SSH</p>
-</li>
+<blockquote>
+<p>sudo apt-get install git</p>
+</blockquote>
+<h4 id="配置-git"><a href="#配置-git" class="headerlink" title="配置 git"></a>配置 git</h4><ul>
+<li>配置个人信息</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.name <span class="hljs-string">&quot;Your Name&quot;</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.email <span class="hljs-string">&quot;email@example.com&quot;</span></span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>生成 SSH</li>
 </ul>
 <blockquote>
-<p> $ ssh-keygen -t rsa -C “<a href="mailto:&#121;&#111;&#117;&#114;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x40;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#46;&#x63;&#111;&#x6d;">&#121;&#111;&#117;&#114;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x40;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#46;&#x63;&#111;&#x6d;</a>“</p>
+<p>$ ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#111;&#117;&#x72;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x40;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#101;&#x2e;&#99;&#x6f;&#109;">&#x79;&#111;&#117;&#x72;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x40;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#101;&#x2e;&#99;&#x6f;&#109;</a>“</p>
 </blockquote>
 <blockquote>
-<p>sh -c “$(curl -fsSL <a target="_blank" rel="noopener" href="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh">https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh</a>)”  </p>
+<p>sh -c “$(curl -fsSL <a target="_blank" rel="noopener" href="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh">https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh</a>)”</p>
 </blockquote>
 <blockquote>
 <p>更换主题 agnoster</p>
 </blockquote>
-<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><ul>
-<li>安装最新nodejs方法</li>
+<h2 id="安装-nodejs"><a href="#安装-nodejs" class="headerlink" title="安装 nodejs"></a>安装 nodejs</h2><ul>
+<li>安装最新 nodejs 方法</li>
 </ul>
 <blockquote>
-<p>curl -sL <a target="_blank" rel="noopener" href="https://deb.nodesource.com/setup_12.x">https://deb.nodesource.com/setup_12.x</a> | sudo -E bash -<br>sudo apt-get install -y nodejs  </p>
+<p>curl -sL <a target="_blank" rel="noopener" href="https://deb.nodesource.com/setup_12.x">https://deb.nodesource.com/setup_12.x</a> | sudo -E bash -<br>sudo apt-get install -y nodejs</p>
 </blockquote>
-<h3 id="替换npm源"><a href="#替换npm源" class="headerlink" title="替换npm源"></a>替换npm源</h3><p> 1.临时使用  </p>
+<h3 id="替换-npm-源"><a href="#替换-npm-源" class="headerlink" title="替换 npm 源"></a>替换 npm 源</h3><p>1.临时使用</p>
 <blockquote>
-<p>npm –registry <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a> install express  </p>
+<p>npm –registry <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a> install express</p>
 </blockquote>
-<p> 2.持久使用 </p>
+<p>2.持久使用</p>
 <blockquote>
-<p>npm config set registry <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a><br>&#x2F;&#x2F; 配置后可通过下面方式来验证是否成功<br>npm config get registry<br>&#x2F;&#x2F; 或<br>npm info express  </p>
+<p>npm config set registry <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a><br>&#x2F;&#x2F; 配置后可通过下面方式来验证是否成功<br>npm config get registry<br>&#x2F;&#x2F; 或<br>npm info express</p>
 </blockquote>
-<p>3.通过cnpm使用  </p>
+<p>3.通过 cnpm 使用</p>
 <blockquote>
 <p>npm install -g cnpm –registry&#x3D;<a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a><br>&#x2F;&#x2F; 使用<br>cnpm install expresstall express</p>
 </blockquote>
-<h2 id="Centos一些配置"><a href="#Centos一些配置" class="headerlink" title="Centos一些配置"></a>Centos一些配置</h2><h3 id="ifconfig-command-not-found"><a href="#ifconfig-command-not-found" class="headerlink" title="ifconfig command not found"></a>ifconfig command not found</h3><blockquote>
+<h2 id="Centos-一些配置"><a href="#Centos-一些配置" class="headerlink" title="Centos 一些配置"></a>Centos 一些配置</h2><h3 id="ifconfig-command-not-found"><a href="#ifconfig-command-not-found" class="headerlink" title="ifconfig command not found"></a>ifconfig command not found</h3><blockquote>
 <p>yum install net-tools</p>
 </blockquote>
 

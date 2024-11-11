@@ -19,19 +19,19 @@
   <meta name="author" content="Gaozhenyu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linux添加Service实现自启动 以启动jar包为例   cd &#x2F;ets&#x2F;systemd&#x2F;system 创建自己的service文件   12345678910111213141516[Unit] Description&#x3D;yourProjectName #描述 After&#x3D;syslog.target network.target #依赖 [Service] Ty">
+    <meta name="description" content="Linux 添加 Service 实现自启动 以启动 jar 包为例   cd &#x2F;ets&#x2F;systemd&#x2F;system 创建自己的 service 文件   12345678910111213141516[Unit]Description&#x3D;yourProjectName #描述After&#x3D;syslog.target network.target #依赖[Service">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux添加Service">
 <meta property="og:url" content="https://formels.top/2021/05/10/linux/Linux%E6%B7%BB%E5%8A%A0Service/index.html">
 <meta property="og:site_name" content="Gao">
-<meta property="og:description" content="Linux添加Service实现自启动 以启动jar包为例   cd &#x2F;ets&#x2F;systemd&#x2F;system 创建自己的service文件   12345678910111213141516[Unit] Description&#x3D;yourProjectName #描述 After&#x3D;syslog.target network.target #依赖 [Service] Ty">
+<meta property="og:description" content="Linux 添加 Service 实现自启动 以启动 jar 包为例   cd &#x2F;ets&#x2F;systemd&#x2F;system 创建自己的 service 文件   12345678910111213141516[Unit]Description&#x3D;yourProjectName #描述After&#x3D;syslog.target network.target #依赖[Service">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhyu-gao/zhyu-gao.github.io@image/uPic/image-20210510161902086.png">
+<meta property="og:image" content="https://img.formels.top/image/202411111525355.png">
 <meta property="article:published_time" content="2021-05-10T00:16:16.000Z">
-<meta property="article:modified_time" content="2024-10-28T02:45:46.561Z">
+<meta property="article:modified_time" content="2024-11-11T07:29:40.969Z">
 <meta property="article:author" content="Gaozhenyu">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zhyu-gao/zhyu-gao.github.io@image/uPic/image-20210510161902086.png">
+<meta name="twitter:image" content="https://img.formels.top/image/202411111525355.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -326,16 +326,15 @@
             
               <div class="markdown-body">
                 
-                <h3 id="Linux添加Service实现自启动"><a href="#Linux添加Service实现自启动" class="headerlink" title="Linux添加Service实现自启动"></a>Linux添加Service实现自启动</h3><blockquote>
-<p>以启动jar包为例</p>
+                <h3 id="Linux-添加-Service-实现自启动"><a href="#Linux-添加-Service-实现自启动" class="headerlink" title="Linux 添加 Service 实现自启动"></a>Linux 添加 Service 实现自启动</h3><blockquote>
+<p>以启动 jar 包为例</p>
 </blockquote>
 <ol>
 <li>cd &#x2F;ets&#x2F;systemd&#x2F;system</li>
-<li>创建自己的service文件</li>
+<li>创建自己的 service 文件</li>
 </ol>
 <p><img src="https://cdn.jsdelivr.net/gh/zhyu-gao/zhyu-gao.github.io@image/uPic/image-20210510161902086.png" srcset="/img/loading.gif" lazyload alt="image-20210510161902086"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">[Unit] <br>Description=yourProjectName #描述 <br>After=syslog.target network.target #依赖 <br><br>[Service] <br>Type=simple <br><br>ExecStart=/usr/bin/java -jar /opt/javaapps/yourProjectName.jar <br><span class="hljs-meta prompt_">#</span><span class="language-bash">前面是java命令的绝对路径 后面是jar包的绝对路径</span> <br>ExecStop=/bin/kill -15 $MAINPID <br><br>User=root <br>Group=root <br><br>[Install] <br>WantedBy=multi-user.target <br></code></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">[Unit]<br>Description=yourProjectName #描述<br>After=syslog.target network.target #依赖<br><br>[Service]<br>Type=simple<br><br>ExecStart=/usr/bin/java -jar /opt/javaapps/yourProjectName.jar<br><span class="hljs-meta prompt_">#</span><span class="language-bash">前面是java命令的绝对路径 后面是jar包的绝对路径</span><br>ExecStop=/bin/kill -15 $MAINPID<br><br>User=root<br>Group=root<br><br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure>
 
                 
               </div>

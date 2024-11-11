@@ -19,18 +19,20 @@
   <meta name="author" content="Gaozhenyu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Unity全面屏适配 修改xcode方法  123456789101112131415string src &#x3D; @&quot;    _window         &#x3D; [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];&quot;;  string dst &#x3D; @&quot;&#x2F;&#x2F;    _window         &#x3D;">
+    <meta name="description" content="Unity 全面屏适配 修改 xcode 方法  123456789101112131415string src &#x3D; @&quot;    _window         &#x3D; [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];&quot;;string dst &#x3D; @&quot;&#x2F;&#x2F;    _window">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity全面屏适配 IOS">
 <meta property="og:url" content="https://formels.top/2020/04/28/unity3d/Unity%E5%85%A8%E9%9D%A2%E5%B1%8F%E9%80%82%E9%85%8D-IOS/index.html">
 <meta property="og:site_name" content="Gao">
-<meta property="og:description" content="Unity全面屏适配 修改xcode方法  123456789101112131415string src &#x3D; @&quot;    _window         &#x3D; [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];&quot;;  string dst &#x3D; @&quot;&#x2F;&#x2F;    _window         &#x3D;">
+<meta property="og:description" content="Unity 全面屏适配 修改 xcode 方法  123456789101112131415string src &#x3D; @&quot;    _window         &#x3D; [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];&quot;;string dst &#x3D; @&quot;&#x2F;&#x2F;    _window">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.formels.top/image/202411111534515.png">
 <meta property="article:published_time" content="2020-04-27T21:24:45.000Z">
-<meta property="article:modified_time" content="2024-10-28T02:45:46.564Z">
+<meta property="article:modified_time" content="2024-11-11T07:34:50.521Z">
 <meta property="article:author" content="Gaozhenyu">
 <meta property="article:tag" content="ugui">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.formels.top/image/202411111534515.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -325,13 +327,13 @@
             
               <div class="markdown-body">
                 
-                <h2 id="Unity全面屏适配"><a href="#Unity全面屏适配" class="headerlink" title="Unity全面屏适配"></a>Unity全面屏适配</h2><ul>
-<li>修改xcode方法</li>
+                <h2 id="Unity-全面屏适配"><a href="#Unity-全面屏适配" class="headerlink" title="Unity 全面屏适配"></a>Unity 全面屏适配</h2><ul>
+<li>修改 xcode 方法</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs objective-c">string src = @&quot;    _window         = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];&quot;;  <br><br>string dst = @&quot;//    _window         = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];<br><br>  CGRect winSize = [UIScreen mainScreen].bounds;<br>  if (winSize.size.width / winSize.size.height &gt; 2) &#123;<br>      winSize.size.width -= 64;<br>      winSize.origin.x = 32;<br>  &#125; <br>  _window = [[UIWindow alloc] initWithFrame: winSize];<br><br>  &quot;;<br>       string unityAppControllerPath = path + &quot;/Classes/UnityAppController.mm&quot;;<br>       XClassExt UnityAppController = new XClassExt (unityAppControllerPath);<br>       UnityAppController.Replace (src, dst);<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs objective-c">string src = @&quot;    _window         = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];&quot;;<br><br>string dst = @&quot;//    _window         = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];<br><br>  CGRect winSize = [UIScreen mainScreen].bounds;<br>  if (winSize.size.width / winSize.size.height &gt; 2) &#123;<br>      winSize.size.width -= 64;<br>      winSize.origin.x = 32;<br>  &#125;<br>  _window = [[UIWindow alloc] initWithFrame: winSize];<br><br>  &quot;;<br>       string unityAppControllerPath = path + &quot;/Classes/UnityAppController.mm&quot;;<br>       XClassExt UnityAppController = new XClassExt (unityAppControllerPath);<br>       UnityAppController.Replace (src, dst);<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>修改UGUI方法</li>
+<li>修改 UGUI 方法</li>
 </ul>
 
                 
