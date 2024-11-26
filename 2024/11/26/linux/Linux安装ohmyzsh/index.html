@@ -19,16 +19,16 @@
   <meta name="author" content="Gaozhenyu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 安装 zsh123    apt install zsh&#96;&#96;&#96;设置默认终端为 zsh（注意：不要使用 sudo）  chsh -s &#x2F;bin&#x2F;zsh 1chsh -s &#x2F;bin&#x2F;zsh  2. 安装 ohmyzsh1sh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;pocmon&#x2F;ohmyzsh&#x2F;raw&#x2F;master&#x2F;tools&#x2F;inst">
+    <meta name="description" content="1. 安装 zsh1apt install zsh  设置默认终端为 zsh（注意：不要使用 sudo） chsh -s &#x2F;bin&#x2F;zsh 1chsh -s &#x2F;bin&#x2F;zsh  2. 安装 ohmyzsh1sh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;pocmon&#x2F;ohmyzsh&#x2F;raw&#x2F;master&#x2F;tools&#x2F;install.sh)&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux安装ohmyzsh">
 <meta property="og:url" content="https://formels.top/2024/11/26/linux/Linux%E5%AE%89%E8%A3%85ohmyzsh/index.html">
 <meta property="og:site_name" content="Gao">
-<meta property="og:description" content="1. 安装 zsh123    apt install zsh&#96;&#96;&#96;设置默认终端为 zsh（注意：不要使用 sudo）  chsh -s &#x2F;bin&#x2F;zsh 1chsh -s &#x2F;bin&#x2F;zsh  2. 安装 ohmyzsh1sh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;pocmon&#x2F;ohmyzsh&#x2F;raw&#x2F;master&#x2F;tools&#x2F;inst">
+<meta property="og:description" content="1. 安装 zsh1apt install zsh  设置默认终端为 zsh（注意：不要使用 sudo） chsh -s &#x2F;bin&#x2F;zsh 1chsh -s &#x2F;bin&#x2F;zsh  2. 安装 ohmyzsh1sh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;pocmon&#x2F;ohmyzsh&#x2F;raw&#x2F;master&#x2F;tools&#x2F;install.sh)&amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.formels.top/image/202411261102897.png">
 <meta property="article:published_time" content="2024-11-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-26T03:08:42.041Z">
+<meta property="article:modified_time" content="2024-11-26T03:10:44.810Z">
 <meta property="article:author" content="Gaozhenyu">
 <meta property="article:tag" content="zsh">
 <meta property="article:tag" content="ohmyzsh">
@@ -328,8 +328,9 @@
             
               <div class="markdown-body">
                 
-                <h1 id="1-安装-zsh"><a href="#1-安装-zsh" class="headerlink" title="1. 安装 zsh"></a>1. 安装 zsh</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">    apt install zsh<br>```<br>设置默认终端为 zsh（注意：不要使用 sudo）<br></code></pre></td></tr></table></figure>
+                <h1 id="1-安装-zsh"><a href="#1-安装-zsh" class="headerlink" title="1. 安装 zsh"></a>1. 安装 zsh</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">apt install zsh<br></code></pre></td></tr></table></figure>
 
+<p>设置默认终端为 zsh（注意：不要使用 sudo）</p>
 <p>chsh -s &#x2F;bin&#x2F;zsh</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chsh -s /bin/zsh<br></code></pre></td></tr></table></figure>
 
@@ -359,6 +360,7 @@
 <li>z 是一个快速切换目录插件，当你输入命令时，会自动切换到你输入的目录</li>
 </ul>
 <h2 id="4-2-配置插件"><a href="#4-2-配置插件" class="headerlink" title="4.2 配置插件"></a>4.2 配置插件</h2><p>将 <code>plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions z)</code> 添加到 <code>~/.zshrc</code> 文件中。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
 
                 
               </div>
