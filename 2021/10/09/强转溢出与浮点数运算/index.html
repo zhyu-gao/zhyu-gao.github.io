@@ -1,0 +1,860 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Gaozhenyu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="java 中的数据类型转换.在 java 中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下：  byte，short，char -&gt; int -&gt;long -&gt;float -&gt;double  当 byte，short，char 相互之间不能转换，它们参与运算首先将转换成 int 类型进行运算。   强制类型转换：  目标类型 变量名 &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强转溢出与浮点数运算">
+<meta property="og:url" content="https://formels.top/2021/10/09/%E5%BC%BA%E8%BD%AC%E6%BA%A2%E5%87%BA%E4%B8%8E%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97/index.html">
+<meta property="og:site_name" content="Gao">
+<meta property="og:description" content="java 中的数据类型转换.在 java 中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下：  byte，short，char -&gt; int -&gt;long -&gt;float -&gt;double  当 byte，short，char 相互之间不能转换，它们参与运算首先将转换成 int 类型进行运算。   强制类型转换：  目标类型 变量名 &amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.formels.top/image/202411111524300.png">
+<meta property="article:published_time" content="2021-10-08T17:04:46.000Z">
+<meta property="article:modified_time" content="2024-11-16T08:01:11.356Z">
+<meta property="article:author" content="Gaozhenyu">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.formels.top/image/202411111524300.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>强转溢出与浮点数运算 - Gao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"formels.top","root":"/","version":"1.9.8","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"00bfa221b58bb90539e700798484dd6b","google":{"measurement_id":"G-Q3JZCN956D"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?00bfa221b58bb90539e700798484dd6b";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-Q3JZCN956D", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-Q3JZCN956D');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 35vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Gao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">强转溢出与浮点数运算</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-10-09 01:04" pubdate>
+          2021年10月9日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">强转溢出与浮点数运算</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="java-中的数据类型转换"><a href="#java-中的数据类型转换" class="headerlink" title="java 中的数据类型转换."></a>java 中的数据类型转换.</h3><p>在 java 中，存在两种转换的机制，默认类型转换（隐式转换）和强制类型转换。默认类型转换的规则如下：</p>
+<ul>
+<li><p>byte，short，char -&gt; int -&gt;long -&gt;float -&gt;double</p>
+</li>
+<li><p>当 byte，short，char 相互之间不能转换，它们参与运算首先将转换成 int 类型进行运算。</p>
+</li>
+</ul>
+<p>强制类型转换：</p>
+<ul>
+<li>目标类型 变量名 &#x3D; (目标类型)(被转换的类型)</li>
+</ul>
+<p>在进行类型转换时：</p>
+<ol>
+<li>容量大的数据类型转换为容量小的数据类型时，要加上强制转换符，但可能造成精度降低或溢出；使用时要格外注意。</li>
+<li>有多种类型的数据混合运算时，系统首先自动的将所有数据转换成容量最大的那一种数据类型，然后再进行计算。</li>
+</ol>
+<p>byte 的存储范围是-128-127 的整数范围，那么如果有如下语句：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">byte a <span class="hljs-operator">=</span> (byte)<span class="hljs-number">130</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<p>结果会是多少呢？java 是如何处理强制类型转换的溢出处理呢？</p>
+<p>在计算机中，所有的数据都是存储的补码形式，那么 130 首先被当成 int 型存储，四个字节 32 位，它的补码如下：0000 0000 0000 0000 0000 0000 1000 0010，转换为 byte 类型，进行截取，高字节部分去除，保留低字节部分，得到转换为 byte 类型的补码为：1000 0010，我们将其转换为源码：补码（1000 0010）-&gt;反码（1000 0001）-&gt;原码（1111 1110）为-126，所以最后的答案是-126.如果遇到其他的类型转换，也采用类似的处理方法。</p>
+<p>我们都知道 Java 中基本数据类型中，整型的有<code>byte</code>、<code>short</code>、<code>int</code>、<code>long</code>,依次占用内存空间是<code>1、2、4、8</code>个字节，它们的取值范围如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>字节数</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>1</td>
+<td>[-128，127]</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+<td>[-32768，32767]</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>[-2147483648，2147483647]</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8</td>
+<td>[-9223372036854775808，9223372036854775807]</td>
+</tr>
+</tbody></table>
+<p>既然数据有范围，那么就会存在<code>数据溢出</code>的问题，那么我们看下数据溢出了会是怎样的？</p>
+<h4 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h4><p>我们知道，整型数据在计算机中都是用<code>二进制</code>表示的。这里我们继续拿 byte 进行举例，比如说<code>1</code>的二进制表示为<code>0000 0001</code>，<code>-1</code>的二进制表示为<code>1000 0001</code>，最高位是<code>符号位</code>，1 表示负数，0 表示正数。</p>
+<p>我们知道<code>byte</code>类型占一个字节，也就是 8bit，那么它应该能表示 128 个数字；除去最高位的符号位后，还有 7 个 bit 来表示数字，也就是<code>[0,127]</code>这个范围，共 128 个数字；如果加上符号位，那么<code>byte</code>可以表示的数的范围是<code>[-127,-0]</code>和<code>[0,127]</code>，-0 和 0 表示的数据相同，我们进行合并，所以范围应该是<code>[-127,127]</code>，而 java 规定的范围是<code>[-128,127]</code>，<code>-128</code>怎么表示的。</p>
+<p>其实<code>-128</code>就是用<code>-0</code>来表示的，二进制的<code>补码</code>表示就是<code>1000 0000</code>。</p>
+<p>接下来我们说下几个基本概念：原码、反码和补码。</p>
+<h4 id="原码、反码和补码"><a href="#原码、反码和补码" class="headerlink" title="原码、反码和补码"></a>原码、反码和补码</h4><p><code>原码</code>：就是数据的二进制表示形式，最高位是符号位，1 表示负数，0 表示正数。</p>
+<p><code>反码</code>：正数的反码跟原码相同；负数的反码是在原码的基础上，符号位不变，其余各位取反，1 变 0，0 变 1。</p>
+<p><code>补码</code>：正数的补码跟原码相同；负数的补码是在其反码的基础上加 1。</p>
+<p>比如说，<code>10</code>的原码是<code>0000 1010</code>，由于它是正数，所以它的反码和补码均与原码相同。 <code>-10</code>的原码是<code>1000 1010</code>；它的反码是<code>在原码基础上，符号位不变，其余位数取反</code>，转换后的反码是<code>1111 0101</code>；补码是<code>在反码的基础上+1</code>，转换后的补码是<code>1111 0110</code>。</p>
+<h4 id="加法运算过程拆解"><a href="#加法运算过程拆解" class="headerlink" title="加法运算过程拆解"></a>加法运算过程拆解</h4><p>在计算机的二进制计算中，<code>减法运算</code>也会转化为<code>加法运算</code>来计算。</p>
+<p>对于<code>10-10=0</code>的这个运算，在实际计算过程中，会将<code>10 - 10</code>的操作转化为<code>10 + (-10)</code>。接下来我们看下具体的运算过程：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>10</th>
+<th>-10</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原码</td>
+<td><code>0000 1010</code></td>
+<td><code>1000 1010</code></td>
+</tr>
+<tr>
+<td>反码</td>
+<td><code>0000 1010</code></td>
+<td><code>1111 0101</code></td>
+</tr>
+<tr>
+<td>补码</td>
+<td><code>0000 1010</code></td>
+<td><code>1111 0110</code></td>
+</tr>
+</tbody></table>
+<p>得到对应的补码之后，我们对<code>10</code>和<code>-10</code>的补码进行加法操作：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">+</span> <span class="hljs-number">0000 </span><span class="hljs-number">1010</span><br><span class="hljs-string">———————————</span> <span class="hljs-string">=</span> <span class="hljs-number">0000 </span><span class="hljs-number">0000</span><br>  <span class="hljs-number">1111 </span><span class="hljs-number">0110</span><br><span class="hljs-string">复制代码</span><br></code></pre></td></tr></table></figure>
+
+<p>我们知道补码<code>0000 0000</code>对应的原码也为<code>0000 0000</code>，所以可以得出<code>10 - 10 = 0</code>。</p>
+<h4 id="验证-byte-127-1-结果"><a href="#验证-byte-127-1-结果" class="headerlink" title="验证(byte)(127 +1)结果"></a>验证<code>(byte)(127 +1)</code>结果</h4><p>我们接着看下<code>byte</code>类型的<code>127 + 1</code>的运算过程。</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>127</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原码</td>
+<td><code>0111 1111</code></td>
+<td><code>0000 0001</code></td>
+</tr>
+<tr>
+<td>反码</td>
+<td><code>0111 1111</code></td>
+<td><code>0000 0001</code></td>
+</tr>
+<tr>
+<td>补码</td>
+<td><code>0111 1111</code></td>
+<td><code>0000 0001</code></td>
+</tr>
+</tbody></table>
+<p>得到对应的补码之后，我们对相应的补码进行加法操作：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">+</span> <span class="hljs-number">0111 </span><span class="hljs-number">1111</span><br><span class="hljs-string">———————————</span> <span class="hljs-string">=</span> <span class="hljs-number">1000 </span><span class="hljs-number">0000</span><br>  <span class="hljs-number">0000 </span><span class="hljs-number">0001</span><br><span class="hljs-string">复制代码</span><br></code></pre></td></tr></table></figure>
+
+<p>这里我们得到了<code>1000 0000</code>这个补码，而这个补码对应的数据就是<code>-128</code>，这是一个特例。</p>
+<p>这里需要注意的是，因为使用以前的<code>-0</code>的补码来表示<code>-128</code>, 所以<code>-128</code>并没有原码和反码表示。(对-128 的补码表示<code>[1000 0000]</code>补算出来的原码是<code>[0000 0000]</code>, 这是不正确的)。</p>
+<p>浮点数运算和整数运算相比，只能进行加减乘除这些数值计算，不能做位运算和移位运算。</p>
+<p>在计算机中，浮点数虽然表示的范围大，但是，浮点数有个非常重要的特点，就是浮点数常常无法精确表示。</p>
+<p>举个栗子：</p>
+<p>浮点数<code>0.1</code>在计算机中就无法精确表示，因为十进制的<code>0.1</code>换算成二进制是一个无限循环小数，很显然，无论使用<code>float</code>还是<code>double</code>，都只能存储一个<code>0.1</code>的近似值。但是，<code>0.5</code>这个浮点数又可以精确地表示。</p>
+<p>因为浮点数常常无法精确表示，因此，浮点数运算会产生误差：</p>
+<h1 id="电脑是怎样储存一个整数的-Integer"><a href="#电脑是怎样储存一个整数的-Integer" class="headerlink" title="电脑是怎样储存一个整数的(Integer)"></a>电脑是怎样储存一个整数的(Integer)</h1><p>在讲为什么会存在浮点误差之前，先来谈谈电脑是怎么用 0 跟 1 来表示一个 <strong>整数</strong> 的，大家应该都知道二进制：例如 <code>101</code> 代表 $2^2 + 2^0$ 也就是 5、<code>1010</code> 代表 $2^3 + 2^1$ 也就是 10。</p>
+<p><img src="https://img.formels.top/image/202411061456484.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果是一个无符号的 32 bit 整数，代表它有 32 个位置可以放 0 或 1，所以最小值就是 <code>0000...0000</code> 也就是 0，而最大值 <code>1111...1111</code> 代表 $2^{31} + 2^{30} + … + 2^1 + 2^0$ 也就是 4294967295</p>
+<p>从排列组合的角度来看，因为每一个 bit 位都可以是 0 或 1，整个变量的值有 $2^{32}$ 种可能，所以可以 <strong>精确的</strong> 表达出 0 到 $2^{23} - 1$ 之间的任一个值，不会有任何误差。</p>
+<h1 id="浮点数-Floating-Point"><a href="#浮点数-Floating-Point" class="headerlink" title="浮点数(Floating Point)"></a>浮点数(Floating Point)</h1><p>虽然从 0 到 $2^{23} - 1$ 之间存在很多个整数，但其数量终究是 <strong>有限</strong> 的，就是 $2^{32}$ 那么多个而已；但浮点数就不同了，我们可以这样想：在 1 到 10 这个区间中只有十个整数，却有 <strong>无穷多个</strong> 浮点数，例如 5.1、5.11、5.111 等等，怎么也列举不完。</p>
+<p>但因为在 32 bit 的空间中就只有 2³² 种可能性，为了把所有浮点数都塞在这个 32 bit 的空间里面，许多 CPU 厂商发明了各种浮点数的表示方式，但如果每家 CPU 的格式都不一样也很麻烦，所以最后是以 <a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=GMa5PvBh+EdBrhkLW9lknQ==.hq84dRUaWkMUL+vwKQXx/tpvQ3LYbxKo+NmrCclmw8WYclzBVH8rjNOfQ60firg54Rk3usilCMEM/xgn2rWvUVbEtQPP5w4u1nehML7kybet8v0Vnf2lQ4Bd485pohIUHvImE5C6b5BKgTsbrlvt1A==">IEEE</a> 发布的 <a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=RS87AVeCLnK3VvpawDirEQ==.O/Qc3M8TOzxMVK2nzCpYqlH/hwRX8utjzXdsGsgkqPKArzn8RN2tg6plsoXOhLY5">IEEE 754</a> 作为通用的浮点数运算标准，现在的 CPU 也都遵循这个标准进行设计。</p>
+<h1 id="IEEE-754"><a href="#IEEE-754" class="headerlink" title="IEEE 754"></a>IEEE 754</h1><p>IEEE 754 里面定义了很多东西，其中包括单精度（32 bit）、双精度（64 bit）和特殊值（无穷大、NaN）的表示方式等等</p>
+<h2 id="规格化"><a href="#规格化" class="headerlink" title="规格化"></a>规格化</h2><p>以 8.5 这个浮点数来说，如果要变成 IEEE 754 格式的话必须先做一些规格化处理：把 8.5 拆成 8 + 0.5 也就是 $2^3 + (\cfrac{1}{2})^1$ ，接着写成二进位变成 <code>1000.1</code>，最后再写成 $1.0001 \times 2^3$，与十进制的科学记数法很相似。</p>
+<h2 id="单精度浮点数"><a href="#单精度浮点数" class="headerlink" title="单精度浮点数"></a>单精度浮点数</h2><p>在 IEEE 754 中 32 bit 浮点数被拆分成三个部分，分别是 数符（sign）、阶码（exponent） 和尾数（fraction），加起来总共是 32 个 bit</p>
+<p><img src="https://img.formels.top/image/202411061456179.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>数符（sign）：最左侧的 1 bit 代表正负号，正数的话 sign 就为 0，反之则是 1</li>
+<li>阶码（exponent）：中间的 8 bit 代表规格化之后的次方数，采用的是 <strong>阶码真值 +127</strong> 的格式，也就是 3 还要再加上 127 等于 130</li>
+<li>尾数（fraction）：最右侧的 23 bit 放的是小数部分，以 <code>1.0001</code> 来说就是去掉 <code>1.</code> 之后的 <code>0001</code></li>
+</ul>
+<p>所以如果把 8.5 表示成 32 bit 格式的话应该是这样：</p>
+<p><img src="https://img.formels.top/image/202411061456454.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="什么情况下会产生误差？"><a href="#什么情况下会产生误差？" class="headerlink" title="什么情况下会产生误差？"></a>什么情况下会产生误差？</h2><p>前面举的 8.5 的例子可以表示为 $2^3 + (\cfrac{1}{2})^1$ ，是因为 8 和 0.5 刚好都是 2 的次方数，所以完全不会产生任何精准度问题。</p>
+<p>但如果是 8.9 的话因为没办法换成 2 的次方数相加，所以最后会被迫表示成 $1.0001110011… \times 2^3$，而且还会产生大概 $0.0000003$ 的误差，如果对结果好奇的话可以到 <a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=xXrFiGGqitQzX0jigVJ7pw==.6AjLqmqz2hu6uz0S5NIq/eTX2VwObRQ+CU3IXxL1cYMRiLLoU75yPghNyJFMXA6SFv/zvwV6nMscwzMp7ZnYlQ==">IEEE-754 Floating Point Converter</a> 网站上玩玩看。</p>
+<h2 id="双精度浮点数"><a href="#双精度浮点数" class="headerlink" title="双精度浮点数"></a>双精度浮点数</h2><p>前面所讲的单精度浮点数只用了 32 bit 来表示，为了让误差更小，IEEE 754 也定义了如何用 64 bit 来表示浮点数，跟 32 bit 比起来 fraction 部分扩大了两倍多，从 23 bit 变成 52 bit，所以精准度自然会提高许多。</p>
+<p><img src="https://img.formels.top/image/202411061457992.png" srcset="/img/loading.gif" lazyload></p>
+<p>以刚才的 8.9 为例，用 64 bit 表示的话虽然可以变得更准，但因为 8.9 无法完全写成 2 的次方数相加，到了小数下 16 位仍然会出现误差，不过与单精度的误差 0.0000003 比起来已经小了很多</p>
+<p><img src="https://img.formels.top/image/202411061457357.png" srcset="/img/loading.gif" lazyload></p>
+<p>类似的情况还有像 Python 中的 <code>1.0</code> 跟 <code>0.999...999</code> 是相等的、<code>123</code> 跟 <code>122.999...999</code> 也是相等的，因为他们之间的差距已经小到无法放在 fraction 里面，所以从二进制格式看来它们每一个二进制位都是一样的。</p>
+<p><img src="https://img.formels.top/image/202411061457391.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>既然浮点数的误差是无法避免的，那就只好跟它共处了，下面是两个比较常见的处理方法：</p>
+<h2 id="设定最大允许误差-ε-epsilon"><a href="#设定最大允许误差-ε-epsilon" class="headerlink" title="设定最大允许误差 ε (epsilon)"></a>设定最大允许误差 ε (epsilon)</h2><p>在某些语言会提供所谓的 epsilon，用来让你判断是不是在浮点误差的允许范围内，以 Python 来说 epsilon 的值大约是 $2.2e^{-16}$</p>
+<p><img src="https://img.formels.top/image/202411061457460.png" srcset="/img/loading.gif" lazyload></p>
+<p>所以你可以把 <code>0.1 + 0.2 == 0.3</code> 改写成 <code>0.1 + 0.2 — 0.3 &lt;= epsilon</code>，这样就能避免浮点误差在运算过程中捣乱，正确的比较出 0.1 加 0.2 是不是等于 0.3 了。</p>
+<blockquote>
+<p>当然如果系统没提供的话你也可以自己定义一个 epsilon，设定在 2 的 -15 次方左右</p>
+</blockquote>
+<h2 id="完全使用十进制进行计算"><a href="#完全使用十进制进行计算" class="headerlink" title="完全使用十进制进行计算"></a>完全使用十进制进行计算</h2><p>之所以会有浮点误差，是因为把十进制转为二进制的过程中没办法把所有的小数部分都塞进了尾数中，既然转换可能会有误差，那干脆就不转了，直接用十进制来做运算。</p>
+<p>在 Python 里面有一个 module 叫做 <a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=EGqzPiHvOGHU5YymrWlxKw==.8AEYfFMlIGJ/8spbR0ywxxV+rdFNfmvm+jodZzcUm5k5eBGb05+GlQKMii02WfXa+8pfz2yV6OoysUDEWJz5WA==">decimal</a>，在 JavaScript 中也有类似的包。它可以帮你用十进制来进行计算，就像你自己用纸笔计算 0.1 + 0.2 绝对不会出错、也不会有任何误差。</p>
+<p><img src="https://img.formels.top/image/202411061458514.png" srcset="/img/loading.gif" lazyload></p>
+<p>虽然用十进制进行计算可以完全避免浮点数的误差，但因为 Decimal 的十进制计算是模拟出来的，在最底层的 CPU 电路中还是在用二进制进行运算，执行起来会比原生的浮点运算慢很多，所以不建议所有的浮点运算都用 Decimal 来进行。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/11/os/zerotier/" title="ZeroTier内网穿透">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ZeroTier内网穿透</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/31/hackintosh/%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%BC%98%E5%8C%96/" title="黑苹果优化">
+                        <span class="hidden-mobile">黑苹果优化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'zhyu-gao/zhyu-gao.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2810896559184076" crossorigin="anonymous"></script>
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
