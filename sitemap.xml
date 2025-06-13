@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://formels.top/2024/11/26/linux/Linux%E5%AE%89%E8%A3%85ohmyzsh/</loc>
+    
+    <lastmod>2024-12-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://formels.top/2024/12/02/cloudflare/cloudflared%20tunnel/</loc>
     
     <lastmod>2024-12-02</lastmod>
@@ -175,7 +184,7 @@
 
   <url>
     <loc>https://formels.top/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -183,126 +192,140 @@
   
   <url>
     <loc>https://formels.top/tags/Linux/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/resume/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/Cloudflared/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/Java/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/git/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/github/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/hackintosh/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/html/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/Spring/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/scoop/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/jvm/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/wsl/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/%E9%9D%A2%E8%AF%95/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/java/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/ugui/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/tags/docker/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://formels.top/tags/zsh/</loc>
+    <lastmod>2025-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://formels.top/tags/ohmyzsh/</loc>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -311,84 +334,84 @@
   
   <url>
     <loc>https://formels.top/categories/%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/resume/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/Cloudflare/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/Java/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/git/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/hackintosh/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%B3/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/os/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/java/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/unity3d/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://formels.top/categories/Linux/</loc>
-    <lastmod>2024-12-02</lastmod>
+    <lastmod>2025-06-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
